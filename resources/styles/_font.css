@@ -1,0 +1,42 @@
+@font-face {
+    font-family: 'AgodaSansStemless';
+    src: url('../fonts/AgodaSansStemless_W_Rg.woff2') format('woff2');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'AgodaSansStemless';
+    src: url('../fonts/AgodaSansStemless_W_He.woff2') format('woff2');
+    font-weight: 900;
+}
+
+@font-face {
+    font-family: 'AgodaSansText';
+    src: url('../fonts/AgodaSansText_W_Rg.woff2') format('woff2');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'AgodaSansText';
+    src: url('../fonts/AgodaSansText_W_Bd.woff2') format('woff2');
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'AgodaSansText';
+    src: url('../fonts/AgodaSansText_W_He.woff2') format('woff2');
+    font-weight: 900;
+}
+
+/* AgodaSansStem */
+@font-face {
+    font-family: 'AgodaSansStem';
+    src: url('../fonts/AgodaSansStemless_W_He.woff2') format('woff2');
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'AgodaSansStem';
+    src: url('../fonts/AgodaSansStemless_W_Rg.woff2') format('woff2');
+    font-weight: 900;
+}

@@ -1,0 +1,63 @@
+
+@import './_font.css';
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+
+
+body {
+    font-family: 'AgodaSansText', sans-serif;
+}
+
+.max-screen {
+
+    @apply lg:tw-mx-auto tw-px-[calc(26/var(--base-screen)*100vw)] lg:tw-px-0;
+    
+    @screen lg {
+        max-width: calc((1631.17 / 1990) * 100%);
+    }
+
+    @screen xl {
+        max-width: 1631.17px;
+    }
+}
+/* !tw-gap-x-[calc(30/var(--base-screen)*100vw)] md:!tw-gap-x-[calc(40.35/var(--base-screen)*100vw)] xl:!tw-gap-x-[40.35px] */
+:root {
+    --base-screen: 414;
+    --card-gap: calc(30/var(--base-screen)*100);
+}
+
+@screen sm {
+    :root {
+        --base-screen: 640;
+        --card-gap: calc(30/var(--base-screen)*100);
+    }
+}
+
+@screen md {
+    :root {
+        --base-screen: 768;
+        --card-gap: calc(40.35/var(--base-screen)*100);
+    }
+}
+
+@screen lg {
+    :root {
+        --base-screen: 1990;
+        --card-gap: calc(40.35/var(--base-screen)*100);
+    }
+}
+
+@screen xl {
+    :root {
+        --base-screen: 1990;
+        --card-gap: 40.35;
+    }
+}
+
+.slick-track {
+    /* @apply !tw-gap-x-[calc(30/var(--base-screen)*100vw)] md:!tw-gap-x-[calc(46.35/var(--base-screen)*100vw)] xl:!tw-gap-x-[46.35px]; */
+    display: flex !important;
+
+}
