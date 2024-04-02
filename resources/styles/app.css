@@ -5,6 +5,14 @@
 @import 'tailwindcss/utilities';
 
 
+.Bootstrap {
+    ol,
+        ul {
+        list-style: unset;
+        margin: 0;
+        padding: 0;
+    }
+}
 
 body {
     font-family: 'AgodaSansText', sans-serif;
@@ -60,4 +68,13 @@ body {
     /* @apply !tw-gap-x-[calc(30/var(--base-screen)*100vw)] md:!tw-gap-x-[calc(46.35/var(--base-screen)*100vw)] xl:!tw-gap-x-[46.35px]; */
     display: flex !important;
 
+}
+
+.heateor_sss_sharing_ul {
+    display: flex;
+    column-gap: 15px;
+}
+
+.open {
+    display: block !important;
 }

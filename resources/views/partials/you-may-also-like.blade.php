@@ -1,5 +1,5 @@
 <!-- You may also like Desktop & Mobile -->
-<div class="tw-flex-col tw-flex">
+<div class="tw-flex-col tw-flex tw-relative">
   <h2 class="max-screen tw-w-full tw-font-agoda-sans-stemless tw-my-[calc(37/var(--base-screen)*100vw)] lg:tw-my-[calc(46/var(--base-screen)*100vw)] xl:tw-my-[46px] tw-font-[400] tw-text-[calc((28/var(--base-screen))*100vw)] lg:tw-text-[calc((48/var(--base-screen))*100vw)] xl:tw-text-[48px] tw-text-[#2A2A2E]">You may also like</h2>
   <div class="may-also-like tw-flex tw-w-full tw-items-center tw-relative tw-pb-5 tw-max-w-[calc(100vw-(45/var(--base-screen)*100vw))] tw-mx-auto lg:tw-px-[calc(20/var(--base-screen)*100vw)] xl:tw-px-[20px] lg:tw-max-w-[calc(((1631.17+20)/var(--base-screen))*100vw)] xl:tw-max-w-[calc(1631.17px+20px)]">
     <!-- Right Arrow -->
@@ -13,7 +13,7 @@
 
     <!-- Cards -->
     <div class="may-also-like-wrapper tw-flex tw-flex-nowrap tw-gap-x-[calc(10/var(--base-screen)*100vw)] md:tw-gap-x-[calc(20/var(--base-screen)*100vw)] lg:tw-gap-[calc(43/var(--base-screen)*100vw)] xl:tw-gap-[43px]">
-      @for($i=1; $i<=8; $i++)
+    @for($i=1; $i<=5; $i++)
         @include('components.you-may-also-like-card')
       @endfor
     </div>

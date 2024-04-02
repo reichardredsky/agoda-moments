@@ -1,11 +1,19 @@
 import domReady from '@roots/sage/client/dom-ready';
 import AgodaSwiper from './moment-swiper.js';
+import SideBar from './sidebar.js';
+import './bootstrap-loader.js';
+import Dropdown from './dropdown.js';
 
 /**
  * Application entrypoint
  */
 domReady(async () => {
   // ...
+
+  SideBar();
+
+  new Dropdown('#dropdown-collapse');
+  new Dropdown('#dropdown-collapse-mobile');
   
   AgodaSwiper('.agoda-swiper', {
     id: '',

@@ -26,24 +26,26 @@
           <span class="tw-text-white  tw-font-agoda-sans-stemless tw-font-[400] tw-text-[calc(17/var(--base-screen)*100vw)] lg:tw-text-[calc(22/var(--base-screen)*100vw)] xl:tw-text-[22px]">Modeling And travel</span>
           <p class="tw-text-white tw-leading-[calc(20.4/var(--base-screen)*100vw)] lg:tw-leading-[calc(33/var(--base-screen)*100vw)] xl:tw-leading-[33px] tw-line-clamp-4 lg:tw-line-clamp-3 tw-font-agoda-sans-stemless tw-font-[400] tw-max-w-[calc(250/var(--base-screen)*100vw)] sm:tw-max-w-[calc(500/var(--base-screen)*100vw)] md:tw-max-w-[calc(700/var(--base-screen)*100vw)] xl:tw-max-w-[830px] tw-mt-[calc(16/var(--base-screen)*100vw)] lg:tw-mt-[calc(25/var(--base-screen)*100vw)] xl:tw-mt-[25px] tw-text-[calc(17/var(--base-screen)*100vw)] lg:tw-text-[calc(22/var(--base-screen)*100vw)] xl:tw-text-[22px]">Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, magna a ullamcorper laoreet, lectus arcu pulvinar risus.</p>
           <div class="tw-hidden lg:tw-flex tw-mt-[calc(32/var(--base-screen)*100vw)] lg:tw-mt-[calc(23/var(--base-screen)*100vw)] xl:tw-mt-[23px] lg:tw-gap-x-[calc(20/var(--base-screen)*100vw)] xl:tw-gap-x-[20px]">
-            <a href="#"><img src="@asset('images/svg/facebook.svg')"></a>
-            <a href="#"><img src="@asset('images/svg/messenger.svg')"></a>
-            <a href="#"><img src="@asset('images/svg/x.svg')"></a>
-            <a href="#"><img src="@asset('images/svg/linkedin.svg')"></a>
-            <a href="#"><img src="@asset('images/svg/line.svg')"></a>
-            <a href="#"><img src="@asset('images/svg/whatsapp.svg')"></a>
+            <a href="#"><img class="tw-w-[calc(53.21/var(--base-screen)*100vw)] tw-h-[calc(53.21/var(--base-screen)*100vw)] xl:tw-w-[53.21px] xl:tw-h-[53.21px]" src="@asset('images/svg/facebook.svg')"></a>
+            <a href="#"><img class="tw-w-[calc(53.21/var(--base-screen)*100vw)] tw-h-[calc(53.21/var(--base-screen)*100vw)] xl:tw-w-[53.21px] xl:tw-h-[53.21px]" src="@asset('images/svg/messenger.svg')"></a>
+            <a href="#"><img class="tw-w-[calc(53.21/var(--base-screen)*100vw)] tw-h-[calc(53.21/var(--base-screen)*100vw)] xl:tw-w-[53.21px] xl:tw-h-[53.21px]" src="@asset('images/svg/x.svg')"></a>
+            <a href="#"><img class="tw-w-[calc(53.21/var(--base-screen)*100vw)] tw-h-[calc(53.21/var(--base-screen)*100vw)] xl:tw-w-[53.21px] xl:tw-h-[53.21px]" src="@asset('images/svg/linkedin.svg')"></a>
+            <a href="#"><img class="tw-w-[calc(53.21/var(--base-screen)*100vw)] tw-h-[calc(53.21/var(--base-screen)*100vw)] xl:tw-w-[53.21px] xl:tw-h-[53.21px]" src="@asset('images/svg/line.svg')"></a>
+            <a href="#"><img class="tw-w-[calc(53.21/var(--base-screen)*100vw)] tw-h-[calc(53.21/var(--base-screen)*100vw)] xl:tw-w-[53.21px] xl:tw-h-[53.21px]" src="@asset('images/svg/whatsapp.svg')"></a>
+            <a href="#"><img class="tw-w-[calc(53.21/var(--base-screen)*100vw)] tw-h-[calc(53.21/var(--base-screen)*100vw)] xl:tw-w-[53.21px] xl:tw-h-[53.21px]" src="@asset('images/svg/plus.svg')"></a>
           </div>
         </div>
       </div>
     </div>
     <!-- Mobile socials -->
     <div class="tw-w-full tw-flex tw-justify-evenly lg:tw-hidden tw-mt-[calc(27/var(--base-screen)*100vw)] tw-gap-x-[calc(14.87/var(--base-screen)*100vw)] lg:tw-gap-x-[calc(20/var(--base-screen)*100vw)] xl:tw-gap-x-[20px]">
-      <a href="#"><img src="@asset('images/svg/facebook.svg')"></a>
-      <a href="#"><img src="@asset('images/svg/messenger.svg')"></a>
-      <a href="#"><img src="@asset('images/svg/x.svg')"></a>
-      <a href="#"><img src="@asset('images/svg/linkedin.svg')"></a>
-      <a href="#"><img src="@asset('images/svg/line.svg')"></a>
-      <a href="#"><img src="@asset('images/svg/whatsapp.svg')"></a>
+      <a href="#"><img class="tw-w-[calc(39.55/var(--base-screen)*100vw)] tw-h-[calc(39.55/var(--base-screen)*100vw)]" src="@asset('images/svg/facebook.svg')"></a>
+      <a href="#"><img class="tw-w-[calc(39.55/var(--base-screen)*100vw)] tw-h-[calc(39.55/var(--base-screen)*100vw)]" src="@asset('images/svg/messenger.svg')"></a>
+      <a href="#"><img class="tw-w-[calc(39.55/var(--base-screen)*100vw)] tw-h-[calc(39.55/var(--base-screen)*100vw)]" src="@asset('images/svg/x.svg')"></a>
+      <a href="#"><img class="tw-w-[calc(39.55/var(--base-screen)*100vw)] tw-h-[calc(39.55/var(--base-screen)*100vw)]" src="@asset('images/svg/linkedin.svg')"></a>
+      <a href="#"><img class="tw-w-[calc(39.55/var(--base-screen)*100vw)] tw-h-[calc(39.55/var(--base-screen)*100vw)]" src="@asset('images/svg/line.svg')"></a>
+      <a href="#"><img class="tw-w-[calc(39.55/var(--base-screen)*100vw)] tw-h-[calc(39.55/var(--base-screen)*100vw)]" src="@asset('images/svg/whatsapp.svg')"></a>
+      <a href="#"><img class="tw-w-[calc(39.55/var(--base-screen)*100vw)] tw-h-[calc(39.55/var(--base-screen)*100vw)]" src="@asset('images/svg/plus.svg')"></a>
     </div>
   </div>
 </div>

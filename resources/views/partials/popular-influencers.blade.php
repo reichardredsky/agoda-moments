@@ -6,8 +6,12 @@
   </div>
 
   <div class="tw-grid tw-grid-cols-2 sm:tw-grid-cols-3 md:tw-grid-cols-4 lg:tw-grid-cols-6 tw-gap-[calc(19/var(--base-screen)*100vw)] lg:tw-gap-[calc(28.15/var(--base-screen)*100vw)] xl:tw-gap-[28.15px]" id="popularDestinations">
-    @for($i=1; $i<=12; $i++)
-      @include('components.influencer-profile')
+    @include('components.influencer-profile', ['profile_url' => asset('images/png/influencer_1.png')])
+    @include('components.influencer-profile', ['profile_url' => asset('images/webp/pexels-photo-415829.webp')])
+    @include('components.influencer-profile', ['profile_url' => asset('images/webp/profile_picture_maker_before.webp')])
+    @include('components.influencer-profile', ['profile_url' => asset('images/webp/round_profil_picture_before_.webp')])
+    @for($i=1; $i<=8; $i++)
+      @include('components.influencer-profile', ['profile_url' => 'https://i.pravatar.cc/300/'.$i])
     @endfor
   </div>
 </div>
