@@ -1,6 +1,11 @@
 <div class="tw-relative lg:tw-mt-[calc(-227/var(--base-screen)*100vw)] xl:tw-mt-[-227px]">
-  <h2 class="tw-font-agoda-sans-stemless max-screen tw-my-[calc(30/var(--base-screen)*100vw)] lg:tw-my-0 tw-font-[400] tw-text-[calc((28/var(--base-screen))*100vw)] lg:tw-text-[calc((48/var(--base-screen))*100vw)] xl:tw-text-[48px] lg:tw-mb-[calc((38/var(--base-screen))*100vw)] xl:tw-mb-[38px] lg:tw-text-white">Featured Moments</h2>
+  @if ( count($top_10_travel_tips) > 0 )
+  <h2 class="tw-font-agoda-sans-stemless max-screen tw-my-[calc(30/var(--base-screen)*100vw)] lg:tw-my-0 tw-font-[400] tw-text-[calc((28/var(--base-screen))*100vw)] lg:tw-text-[calc((48/var(--base-screen))*100vw)] xl:tw-text-[48px] lg:tw-mb-[calc((38/var(--base-screen))*100vw)] xl:tw-mb-[38px] lg:tw-text-white">
+    {!!  __($header_title ?? '', 'top-travel-tips') !!}
+  </h2>
   <!-- Featured Images Carousel -->
+
+
 
   <div class="agoda-swiper tw-flex tw-w-full tw-relative tw-pb-5 tw-max-w-[calc(100vw-(45/var(--base-screen)*100vw))] tw-mx-auto lg:tw-px-[calc(20/var(--base-screen)*100vw)] xl:tw-px-[20px] lg:tw-max-w-[calc(((1631.17+20)/var(--base-screen))*100vw)] xl:tw-max-w-[calc(1631.17px+20px)]">
     <!-- Right Arrow -->
@@ -14,13 +19,21 @@
 
     <!-- Items -->
     <div class="agoda-swiper-wrapper tw-w-full tw-flex tw-flex-nowrap tw-gap-x-[calc(10/var(--base-screen)*100vw)] md:tw-gap-x-[calc(10/var(--base-screen)*100vw)] lg:tw-gap-x-[calc(40.35/var(--base-screen)*100vw)] xl:tw-gap-x-[40.35px]">
-      @include('components.featured-card')
-
-      @include('components.featured-card')
-
-      @include('components.featured-card')
-
-      @include('components.featured-card')
+      @foreach($top_10_travel_tips as $travelTip)
+        @include('components.featured-card', [
+          'title' => $travelTip['title'],
+          'image' => $travelTip['image'],
+          'excerpt' => $travelTip['excerpt'],
+          'link' => $travelTip['link'],
+          'date' => $travelTip['post_date'],
+          'influencer' => $travelTip['influencer'],
+        ])
+      @endforeach
     </div>
   </div>
+  @else 
+    <p class="tw-text-[#2E2D2A] tw-font-[400] tw-text-[calc(21.85/var(--base-screen)*100vw)] xl:tw-text-[21.85px] tw-line-clamp-1">
+      {{ __('No top travel tips found.', 'moments') }}
+    </p>
+  @endif
 </div>

@@ -5,6 +5,7 @@ const SideBar  = () => {
     let toggle = false;
 
     const onToggle = () => {
+        console.log('sidebar toggle');
         toggle = !toggle;
         if (toggle) {
             body.classList.add('tw-transition-transform', 'tw-duration-300');
@@ -19,8 +20,10 @@ const SideBar  = () => {
     };
 
     sideBarToggle.addEventListener('click', onToggle);
+
     body.addEventListener('click', (e) => {
-        if (toggle && e.target.id !== 'sidebar' && e.target.id !== 'sidebar-toggle') {
+        if (!e.target.classList.contains('sidebar-toggle') && toggle) {
+            e.preventDefault();
             onToggle();
         }
     });

@@ -27,7 +27,8 @@ const AgodaSwiper = (
       var slides = document.querySelectorAll(`${className} ${_parameters.wrapperClass} > div`);
 
       var itemWidth = (getParentExactWidth(parentWrap) / _parameters?.slidesPerView)-getColumnGap(scrollWrapper);
-      var numberOfPages = slides.length - _parameters?.slidesPerView;
+      console.log(_parameters?.slidesPerView > slides.length);
+      var numberOfPages =  (_parameters?.slidesPerView < slides.length) ? slides.length - _parameters?.slidesPerView : 0;
       let pageCounter = 0;
       var nextButton = document.querySelector(`${className} .agoda-swiper-next`) ?? document.createElement('div');
       var prevButton = document.querySelector(`${className} .agoda-swiper-prev`) ?? document.createElement('div');
@@ -37,6 +38,8 @@ const AgodaSwiper = (
       });
 
       scrollWrapper.style.transform = `translateX(5px)`;
+
+      console.log('numberOfPages ', numberOfPages);
 
       if (numberOfPages >= 1) {
           nextButton.style.display = 'flex';

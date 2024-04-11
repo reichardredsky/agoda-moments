@@ -24,6 +24,9 @@ class App extends Composer
     {
         return [
             'siteName' => $this->siteName(),
+            'siteBreadcrumbs' => $this->siteBreadcrumbs(),
+            'copy_right_text' => $this->copyRightText(),
+            'featured_image' => $this->featuredImage()
         ];
     }
 
@@ -35,5 +38,49 @@ class App extends Composer
     public function siteName()
     {
         return get_bloginfo('name', 'display');
+    }
+
+    /**
+     * Returns the site description.
+     *
+     * @return array
+     */
+    public function siteBreadcrumbs() {
+        $breadcrumbs_arr = [
+            ['name' => __('Home', 'moments'), 'url' => home_url('/')],
+            ['name' => __('Agoda Travel Tips', 'moments'), 'url' => home_url('/traveltips')]
+        ];
+
+        if (is_tax()) {
+            $taxonomy = get_queried_object();
+            $term = $taxonomy->name;
+            $breadcrumbs_arr[] = ['name' => $term, 'url' => get_term_link($taxonomy)];
+        }
+
+        if (is_single()) {
+            $post = get_queried_object();
+            $influencer = count(get_the_terms($post->ID, "influencer")) ? get_the_terms($post->ID, "influencer")[0] : null;
+
+            if ($influencer) {
+                $breadcrumbs_arr[] = ['name' => $influencer->name, 'url' => get_term_link($influencer)];
+            }
+
+            $breadcrumbs_arr[] = ['name' => $post->post_title, 'url' => get_permalink($post)];
+            
+        }
+
+        return $breadcrumbs_arr;
+    }
+
+    public function copyRightText() {
+        $copy_right_text = get_field('copy_right_text', 'option');
+
+        return $copy_right_text;
+    }
+
+    public function featuredImage() {
+        $featured_image = get_field('hero_image', 'option');
+
+        return $featured_image;
     }
 }

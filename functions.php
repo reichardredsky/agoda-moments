@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Register The Auto Loader
@@ -77,3 +76,47 @@ collect(['setup', 'filters'])
 */
 
 add_theme_support('sage');
+
+function __view($view, $data = []) {
+    $view = new ViewHack($view, $data);
+
+    return $view->render();
+}
+
+function load_more_influencers() {
+    $per_page = $_POST['per_page'];
+    $offset = ( $_POST['page'] ) * $per_page;
+    $tax_args = [
+        'taxonomy' => 'influencer',
+        'hide_empty' => false,
+        'offset' => $offset,
+        'number' => $per_page,
+    ];
+
+    $influencers = get_terms($tax_args);
+
+    $influencers = array_map( function ( $influencer ) {
+        $influencer->profile_picture = get_field('profile_picture', $influencer);
+        $influencer->link = get_term_link($influencer);
+        $influencer->name = $influencer->name;
+        $influencer->description = $influencer->description;
+        // $influencer->views = get_field('views', $influencer);
+
+        return $influencer;
+    }, $influencers);
+
+    foreach ($influencers as $influencer) {
+        echo view('components/influencer-profile', [
+            'name' => $influencer->name,
+            'description' => $influencer->description,
+            'profile_url' => $influencer->profile_picture,
+            'link' => $influencer->link,
+        ]);
+    }
+
+    wp_die();
+
+}
+
+add_action('wp_ajax_nopriv_load_more_influencers', 'load_more_influencers');
+add_action('wp_ajax_load_more_influencers', 'load_more_influencers');

@@ -109,6 +109,11 @@ add_action('after_setup_theme', function () {
      * @link https://developer.wordpress.org/reference/functions/add_theme_support/#customize-selective-refresh-widgets
      */
     add_theme_support('customize-selective-refresh-widgets');
+
+    /**
+     * Add custom image sizes.
+     */
+    add_image_size('featured', 1990, 700, true);
 }, 20);
 
 /**
