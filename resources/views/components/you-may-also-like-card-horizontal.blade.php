@@ -4,7 +4,7 @@
     <a href="{{ $you_may_also_like->link }}" class="tw-absolute tw-right-0 tw-top-0 tw-w-full tw-h-full"></a>
   </div>
   <!-- Featured Details -->
-  <div class="tw-flex tw-flex-col tw-py-[30px] lg:tw-gap-y-[0.25vw] xl:tw-gap-y-[5px]">
+  <div class="tw-flex tw-flex-col tw-py-[30px] lg:tw-gap-y-[0.25vw] xl:tw-gap-y-[5px] tw-pr-5">
     <a href="{{ $you_may_also_like->link }}" class="hover:tw-opacity-80 tw-delay-75 tw-transition-opacity">
       <p class="hyphens-auto hover:tw-underline lg:tw-text-[calc(21.34/var(--base-screen))] xl:tw-text-[21.34px] tw-font-[700] tw-font-agoda-sans-text tw-text-[#2E2D2A] tw-line-clamp-1">{!! $you_may_also_like->title !!}</p>
     </a>
