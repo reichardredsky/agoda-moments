@@ -59,6 +59,7 @@ class Single extends Composer
             'post_type' => 'travel-tips',
             'posts_per_page' => 10,
             'post_status' => 'publish',
+            'post__not_in' => [get_queried_object_id()],
             'tax_query' => [
                 [
                     'taxonomy' => 'influencer',

@@ -120,3 +120,20 @@ function load_more_influencers() {
 
 add_action('wp_ajax_nopriv_load_more_influencers', 'load_more_influencers');
 add_action('wp_ajax_load_more_influencers', 'load_more_influencers');
+
+
+// $strings = [
+//     'Sorry!',
+//     'We looked everywhere, but couldn\'t find the page you requested. Shall we start a new exploration?',
+//     'Take me there!',
+//     'Recently Updated Travel Tips',
+//     'Top Travel Tips',
+//     'No top travel tips found.',
+//     'You may also like',
+//     'Load more',
+//     'All Countries'
+// ];
+
+// foreach ($strings as $string) {
+//     do_action('wpml_register_single_string', 'moments', '', $string);
+// }

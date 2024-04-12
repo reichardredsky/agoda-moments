@@ -6,7 +6,7 @@
       <h2 class="tw-font-agoda-sans-stemless tw-my-[calc(30/var(--base-screen)*100vw)] lg:tw-my-0 tw-font-[400] tw-text-[calc((28/var(--base-screen))*100vw)] lg:tw-text-[calc((48/var(--base-screen))*100vw)] xl:tw-text-[48px] lg:tw-mb-[calc((54/var(--base-screen))*100vw)] xl:tw-mb-[38px] tw-text-[#2A2A2E]">
         {!! $title !!}
       </h2>
-      @if($has_category ?? false)
+      @if( isset($categories) && count($categories) > 0 )
         <div id="dropdown-collapse" class="tw-relative tw-flex tw-flex-col tw-w-full lg:tw-max-w-[calc((438/var(--base-screen))*100vw)] xl:tw-max-w-[438px]">
           <button class="dropdown-trigger tw-flex tw-justify-between lg:tw-px-[calc(33/var(--base-screen)*100vw)] lg:tw-py-[calc(16/var(--base-screen)*100vw)] xl:tw-py-[19px] xl:tw-px-[33px] tw-shadow-[0px_0px_4px_0px_#0000001F] tw-text-[#5392F9] tw-bg-white-700 hover:tw-bg-white-800 focus:tw-ring-4 focus:tw-outline-none focus:tw-ring-blue-300 tw-font-medium tw-rounded-[999px] tw-text-[calc(28/var(--base-screen)*100vw)] xl:tw-text-[28px]
             tw-text-center tw-inline-flex tw-items-center" type="button">
@@ -21,19 +21,16 @@
               <ul class="tw-flex tw-flex-col tw-bg-white tw-w-full tw-absolute tw-z-40 tw-shadow-xl tw-mt-5 tw-rounded-xl">
                 <li class="hover:tw-bg-gray-50">
                   <a href="#" class="tw-w-full tw-text-[#5392F9] tw-text-[calc(18/var(--base-screen)*100vw)] xl:tw-text-[28px] tw-font-medium tw-py-[calc(12/var(--base-screen)*100vw)] tw-px-[calc(27/var(--base-screen)*100vw)] tw-text-center tw-inline-flex tw-items-center">
-                    All categories
+                    {!! __('All Countries', 'moments') !!}
                   </a>
                 </li>
-                <li class="hover:tw-bg-gray-50">
-                  <a href="#" class="tw-w-full tw-text-[#5392F9] tw-text-[calc(18/var(--base-screen)*100vw)] xl:tw-text-[28px] tw-font-medium tw-py-[calc(12/var(--base-screen)*100vw)] tw-px-[calc(27/var(--base-screen)*100vw)] tw-text-center tw-inline-flex tw-items-center">
-                    Category 1
-                  </a>
-                </li>
-                <li class="hover:tw-bg-gray-50">
-                  <a href="#" class="tw-w-full tw-text-[#5392F9] tw-text-[calc(18/var(--base-screen)*100vw)] xl:tw-text-[28px] tw-font-medium tw-py-[calc(12/var(--base-screen)*100vw)] tw-px-[calc(27/var(--base-screen)*100vw)] tw-text-center tw-inline-flex tw-items-center">
-                    Category 2
-                  </a>
-                </li>
+                @foreach ( $categories as $category )
+                  <li class="hover:tw-bg-gray-50">
+                    <a href="?country={{ $category->slug }}" class="tw-w-full tw-text-[#5392F9] tw-text-[calc(18/var(--base-screen)*100vw)] xl:tw-text-[28px] tw-font-medium tw-py-[calc(12/var(--base-screen)*100vw)] tw-px-[calc(27/var(--base-screen)*100vw)] tw-text-center tw-inline-flex tw-items-center">
+                      {{ $category->name }}
+                    </a>
+                  </li>
+                @endforeach
               </ul>
            </div>
         </div>
@@ -63,7 +60,7 @@
         <h2 class="tw-font-agoda-sans-stemless tw-font-[400] tw-text-[calc((28/var(--base-screen))*100vw)] lg:tw-text-[calc((48/var(--base-screen))*100vw)] xl:tw-text-[48px] lg:tw-mb-[calc((38/var(--base-screen))*100vw)] xl:tw-mb-[38px] tw-text-[#2A2A2E]">
           {!! $title !!}
         </h2>
-        @if($has_category ?? false)
+        @if( isset($categories) && count($categories) > 0 )
           <div id="dropdown-collapse-mobile" class="tw-relative tw-flex tw-flex-col tw-w-full lg:tw-max-w-[calc((438/var(--base-screen))*100vw)] xl:tw-max-w-[438px]">
             <button  class="dropdown-trigger tw-flex tw-justify-between tw-px-[calc(27/var(--base-screen)*100vw)] tw-py-[calc(12/var(--base-screen)*100vw)] tw-shadow-[0px_0px_4px_0px_#0000001F] tw-text-[#5392F9] tw-bg-white-700 hover:tw-bg-white-800 focus:tw-ring-4 focus:tw-outline-none focus:tw-ring-blue-300 tw-font-medium tw-rounded-[999px] tw-text-[calc(18/var(--base-screen)*100vw)] xl:tw-text-[28px]
               tw-text-center tw-inline-flex tw-items-center" type="button">
@@ -78,19 +75,16 @@
               <ul class="tw-flex tw-flex-col tw-bg-white tw-w-full tw-absolute tw-z-40 tw-shadow-xl tw-mt-5 tw-rounded-xl">
                 <li class="hover:tw-bg-gray-50">
                   <a href="#" class="tw-w-full tw-text-[#5392F9] tw-text-[calc(18/var(--base-screen)*100vw)] xl:tw-text-[28px] tw-font-medium tw-py-[calc(12/var(--base-screen)*100vw)] tw-px-[calc(27/var(--base-screen)*100vw)] tw-text-center tw-inline-flex tw-items-center">
-                    All Categories
+                    {!! __('All Countries', 'moments') !!}
                   </a>
                 </li>
-                <li class="hover:tw-bg-gray-50">
-                  <a href="#" class="tw-w-full tw-text-[#5392F9] tw-text-[calc(18/var(--base-screen)*100vw)] xl:tw-text-[28px] tw-font-medium tw-py-[calc(12/var(--base-screen)*100vw)] tw-px-[calc(27/var(--base-screen)*100vw)] tw-text-center tw-inline-flex tw-items-center">
-                    Category 1
-                  </a>
-                </li>
-                <li class="hover:tw-bg-gray-50">
-                  <a href="#" class="tw-w-full tw-text-[#5392F9] tw-text-[calc(18/var(--base-screen)*100vw)] xl:tw-text-[28px] tw-font-medium tw-py-[calc(12/var(--base-screen)*100vw)] tw-px-[calc(27/var(--base-screen)*100vw)] tw-text-center tw-inline-flex tw-items-center">
-                    Category 2
-                  </a>
-                </li>
+                @foreach ( $categories as $category )
+                  <li class="hover:tw-bg-gray-50">
+                    <a href="?country={{ $category->slug }}" class="tw-w-full tw-text-[#5392F9] tw-text-[calc(18/var(--base-screen)*100vw)] xl:tw-text-[28px] tw-font-medium tw-py-[calc(12/var(--base-screen)*100vw)] tw-px-[calc(27/var(--base-screen)*100vw)] tw-text-center tw-inline-flex tw-items-center">
+                      {{ $category->name }}
+                    </a>
+                  </li>
+                @endforeach
               </ul>
            </div>
           </div>
@@ -107,8 +101,8 @@
     </div>
   </div>
   @else 
-    <p class="tw-text-[#2E2D2A] tw-font-[400] tw-text-[calc(21.85/var(--base-screen)*100vw)] xl:tw-text-[21.85px] tw-line-clamp-1">
-      {{ __('No travel tips found.', 'moments') }}
+    <p class="tw-text-[#2E2D2A] tw-text-center tw-font-[400] tw-text-[calc(21.85/var(--base-screen)*100vw)] xl:tw-text-[21.85px] tw-line-clamp-1">
+      {{ __('No Popular travel tips found.', 'moments') }}
     </p>
   @endif
 </div>

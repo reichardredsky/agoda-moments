@@ -1,6 +1,6 @@
 // https://tailwindcss.com/docs/configuration
 module.exports = {
-  content: ['./index.php', './app/**/*.php', './resources/**/*.{php,vue,js}'],
+  content: ['./app/**/*.php', './resources/**/*.{php,vue,js}'],
   'prefix': 'tw-',
   theme: {
     extend: {

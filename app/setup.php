@@ -139,3 +139,71 @@ add_action('widgets_init', function () {
         'id' => 'sidebar-footer',
     ] + $config);
 });
+
+
+add_action( 'init', function() {
+	register_post_type( 'travel-tips', array(
+        'labels' => array(
+            'name' => 'Travel Tips',
+            'singular_name' => 'Travel Tip',
+            'menu_name' => 'Travel Tips',
+            'all_items' => 'All Travel Tips',
+            'edit_item' => 'Edit Travel Tip',
+            'view_item' => 'View Travel Tip',
+            'view_items' => 'View Travel Tips',
+            'add_new_item' => 'Add New Travel Tip',
+            'add_new' => 'Add New Travel Tip',
+            'new_item' => 'New Travel Tip',
+            'parent_item_colon' => 'Parent Travel Tip:',
+            'search_items' => 'Search Travel Tips',
+            'not_found' => 'No travel tips found',
+            'not_found_in_trash' => 'No travel tips found in Trash',
+            'archives' => 'Travel Tip Archives',
+            'attributes' => 'Travel Tip Attributes',
+            'insert_into_item' => 'Insert into travel tip',
+            'uploaded_to_this_item' => 'Uploaded to this travel tip',
+            'filter_items_list' => 'Filter travel tips list',
+            'filter_by_date' => 'Filter travel tips by date',
+            'items_list_navigation' => 'Travel Tips list navigation',
+            'items_list' => 'Travel Tips list',
+            'item_published' => 'Travel Tip published.',
+            'item_published_privately' => 'Travel Tip published privately.',
+            'item_reverted_to_draft' => 'Travel Tip reverted to draft.',
+            'item_scheduled' => 'Travel Tip scheduled.',
+            'item_updated' => 'Travel Tip updated.',
+            'item_link' => 'Travel Tip Link',
+            'item_link_description' => 'A link to a travel tip.',
+        ),
+        'public' => true,
+        'show_in_rest' => true,
+        'supports' => array(
+            0 => 'title',
+            1 => 'editor',
+            2 => 'excerpt',
+            3 => 'thumbnail',
+        ),
+        'taxonomies' => array(
+            0 => 'influencer',
+            1 => 'country',
+        ),
+        'has_archive' => 'travel-tips',
+        'rewrite' => array(
+            'feeds' => false,
+            'slug' => '%influencer%',
+        ),
+        'delete_with_user' => false,
+    ) );
+
+    add_rewrite_tag('%influencer%', '([^&]+)');
+
+    add_rewrite_rule('^([^/]*)/([^/]*)/?', 'index.php?post_type=travel-tips&influencer=$matches[1]&name=$matches[2]', 'top');
+
+} );
+
+add_filter('post_type_link', function ($post_link, $post) {
+    if ('travel-tips' === $post->post_type && $terms = wp_get_object_terms($post->ID, 'influencer')) {
+        return str_replace('%influencer%', $terms[0]->slug, $post_link);
+    }
+
+    return $post_link;
+}, 10, 2);

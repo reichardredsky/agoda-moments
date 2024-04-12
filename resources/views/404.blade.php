@@ -8,10 +8,10 @@
             <div class="tw-absolute">
                 <div class="">
                     <h1 class="tw-my-2 tw-text-gray-800 tw-font-bold tw-text-2xl">
-                        Sorry!
+                        {{ __('Sorry!', 'moments') }}
                     </h1>
-                    <p class="tw-my-2 tw-text-tw-gray-800">We looked everywhere, but couldn't find the page you requested. Shall we start a new exploration?</p>
-                    <a href="/" class="sm:tw-w-full lg:tw-w-auto tw-my-2 tw-border tw-rounded tw-md tw-py-4 tw-px-8 tw-text-center tw-bg-blue-600 tw-text-white hover:tw-bg-blue-700 focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-blue-700 focus:tw-ring-opacity-50">Take me there!</a>
+                    <p class="tw-my-2 tw-text-tw-gray-800">{{ __('We looked everywhere, but couldn\'t find the page you requested. Shall we start a new exploration?', 'moments') }}</p>
+                    <a href="/" class="sm:tw-w-full lg:tw-w-auto tw-my-2 tw-border tw-rounded tw-md tw-py-4 tw-px-8 tw-text-center tw-bg-blue-600 tw-text-white hover:tw-bg-blue-700 focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-blue-700 focus:tw-ring-opacity-50">{{ __('Take me there!', 'moments') }}</a>
                 </div>
             </div>
             <div>
