@@ -89,3 +89,8 @@ body {
 .open {
     display: block !important;
 }
+
+.separator {
+    border-bottom: 1px dashed #ddd;
+    margin: 16px 0 24px;
+}
