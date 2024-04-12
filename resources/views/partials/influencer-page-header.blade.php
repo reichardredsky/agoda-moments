@@ -22,7 +22,7 @@
 
     <!-- Profile Details -->
     <div class="tw-mt-[calc(54/var(--base-screen)*100vw)] lg:tw-mt-[calc(68/var(--base-screen)*100vw)] xl:tw-mt-[68px] tw-flex tw-gap-x-[calc(10/var(--base-screen)*100vw)] lg:tw-gap-x-[calc(65/var(--base-screen)*100vw)]  xl:tw-gap-x-[65px]">
-      <div class="tw-w-[calc(109.34/var(--base-screen)*100vw)] tw-h-[calc(109.34/var(--base-screen)*100vw)] lg:tw-w-[calc(240.56/var(--base-screen)*100vw)] xl:tw-w-[240.56px] lg:tw-h-[calc(240.56/var(--base-screen)*100vw)] xl:tw-h-[240.56px] tw-rounded-full tw-bg-white">
+      <div class="tw-aspect-square tw-w-[calc(109.34/var(--base-screen)*100vw)] tw-h-[calc(109.34/var(--base-screen)*100vw)] lg:tw-w-[calc(240.56/var(--base-screen)*100vw)] xl:tw-w-[240.56px] lg:tw-h-[calc(240.56/var(--base-screen)*100vw)] xl:tw-h-[240.56px] tw-rounded-full tw-bg-white">
         <img src="{{ $influencer_profile->avatar ? $influencer_profile->avatar : asset('images/png/profile-placeholder.png') }}" alt="Profile Picture" class="tw-object-cover tw-rounded-full tw-w-full tw-h-full" />
       </div>
       <div class="tw-flex tw-flex-col">
