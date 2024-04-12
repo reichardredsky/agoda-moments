@@ -27,6 +27,7 @@ class TaxonomyInfluencer extends Composer
             'influencer_profile' => $this->influencerProfile(),
             'socials' => $this->socials(),
             'posts' => $this->influencerPosts(),
+            'categories' => $this->categories(),
         ];
     }
 
@@ -41,7 +42,7 @@ class TaxonomyInfluencer extends Composer
     public function influencerProfile () {
         $influencer = get_queried_object();
         $influencer->avatar = get_field('profile_picture', $influencer);
-        $influencer->cover_photo = get_field('profile_background_image', $influencer)['sizes']['featured'] ?? '';
+        $influencer->cover_photo = get_field('profile_background_image', $influencer)['url'] ?? '';
         $influencer->link = get_term_link($influencer);
         $influencer->influencer_title = get_field('influencer_title', $influencer);
         return $influencer;
@@ -73,17 +74,39 @@ class TaxonomyInfluencer extends Composer
     public function influencerPosts()
     {
         $influencer = get_queried_object();
-        $args = [
-            'post_type' => 'travel-tips',
-            'posts_per_page' => -1,
-            'tax_query' => [
-                [
-                    'taxonomy' => 'influencer',
-                    'field' => 'term_id',
-                    'terms' => $influencer->term_id,
+
+        if ( !isset($_GET['country']) ) {
+
+            $args = [
+                'post_type' => 'travel-tips',
+                'posts_per_page' => -1,
+                'tax_query' => [
+                    [
+                        'taxonomy' => 'influencer',
+                        'field' => 'term_id',
+                        'terms' => $influencer->term_id,
+                    ],
                 ],
-            ],
-        ];
+            ];
+        } else {
+
+            $args = [
+                'post_type' => 'travel-tips',
+                'posts_per_page' => -1,
+                'tax_query' => [
+                    [
+                        'taxonomy' => 'influencer',
+                        'field' => 'term_id',
+                        'terms' => $influencer->term_id,
+                    ],
+                    [
+                        'taxonomy' => 'country',
+                        'field' => 'slug',
+                        'terms' => $_GET['country']
+                    ]
+                ],
+            ];
+        }
 
         $query = new \WP_Query($args);
 
@@ -150,8 +173,26 @@ class TaxonomyInfluencer extends Composer
 
     public function title()
     {
-        $title_string = __('%s\'s Travel Tips');
+        $title_string = __('%s\'s Travel Tips', 'moments');
 
         return sprintf($title_string, get_queried_object()->name);
+    }
+
+    public function categories()
+    {
+
+        $terms = get_terms([
+            'taxonomy' => 'country',
+            'hide_empty' => false,
+        ]);
+
+        $terms = array_map(function ($term) {
+            return (object) [
+                'name' => $term->name,
+                'slug' => $term->slug,
+            ];
+        }, $terms);
+
+        return $terms;
     }
 }

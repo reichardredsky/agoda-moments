@@ -11,9 +11,5 @@
   @include('partials.popular-posts', [
     'title' => __('Recently Updated Travel Tips', 'moments')
     ])
-  {{--
-    @include('partials.page-banner')
-  @include('partials.you-may-also-like')
-    --}}
 @endsection
 

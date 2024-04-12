@@ -57,8 +57,6 @@
 
   <!-- Mobile -->
   <div class="lg:!tw-hidden lg:!tw-mt-[calc(38/var(--base-screen)*100vw)] xl:!tw-mt-[38px] !tw-flex !tw-flex-col lg:!tw-gap-y-[1.5vw] xl:!tw-gap-y-[30px]">
-    @foreach ( $you_may_also_likes as $you_may_also_like )
-      @include('partials.you-may-also-like', ['you_may_also_like' => $you_may_also_like])
-    @endforeach
+  @include('partials.you-may-also-like', ['you_may_also_likes' => $you_may_also_likes])
   </div>
 </div>

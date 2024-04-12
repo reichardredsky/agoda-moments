@@ -10,7 +10,7 @@
       @include('components.influencer-profile', ['name' => $influencer->name, 'description' => $influencer->description, 'profile_url' => $influencer->profile_picture, 'link' => $influencer->link])
     @endforeach
   </div>
-  <button class="tw-bg-[#3E5CCC] tw-rounded-[999px] tw-px-3 tw-py-1 lg:tw-px-5 xl:tw-py-2 tw-text-white hover:tw-opacity-90 tw-mt-5 tw-text-[calc(16/var(--base-screen)*100vw)] lg:tw-text-[16px]" id="loadMoreInfluencers">Load more</button>
+  <button class="tw-bg-[#3E5CCC] tw-rounded-[999px] tw-px-3 tw-py-1 lg:tw-px-5 xl:tw-py-2 tw-text-white hover:tw-opacity-90 tw-mt-5 tw-text-[calc(16/var(--base-screen)*100vw)] lg:tw-text-[16px]" id="loadMoreInfluencers">{{ __('Load more', 'moments') }}</button>
 </div>
 
 <script>

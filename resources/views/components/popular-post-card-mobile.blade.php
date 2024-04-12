@@ -4,7 +4,7 @@
   </div>
   <div class="tw-flex tw-flex-col tw-justify-between tw-p-[calc(20/var(--base-screen)*100vw)]">
     <a href="{{ $post->link }}">
-      <p class="hover:tw-underline tw-text-[#2E2D2A] tw-font-[700] tw-text-[calc(22/var(--base-screen)*100vw)]">{!! $post->title !!}</p>
+      <p class="hyphens-auto hover:tw-underline tw-text-[#2E2D2A] tw-font-[700] tw-text-[calc(22/var(--base-screen)*100vw)]">{!! $post->title !!}</p>
     </a>
     <p class="tw-text-[calc(12/var(--base-screen)*100vw)] tw-font-[400] tw-text-[#2A2A2E] tw-mt-[calc(20/var(--base-screen)*100vw)] xl:tw-mt-[21px] tw-line-clamp-3">
       {!! $post->excerpt !!}

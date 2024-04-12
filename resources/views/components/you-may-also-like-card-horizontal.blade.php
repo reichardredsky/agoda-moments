@@ -1,6 +1,6 @@
 <div class="tw-relative tw-overflow-hidden tw-rounded-[20px] tw-shadow-agoda tw-grid tw-gap-x-5 lg:tw-grid-cols-[calc(252/var(--base-screen)*100vw)_minmax(0,_1fr)] xl:tw-grid-cols-[252px_minmax(0,_1fr)]">
   <!-- Featured Image -->
-  <div class="lg:tw-min-h-[calc(197/var(--base-scren)*100vw)] xl:tw-min-h-[197px] tw-bg-cover tw-bg-no-repeat tw-relative hover:tw-opacity-80 tw-delay-75 tw-transition-opacity" style="background-image: url({{ $you_may_also_like->image }});">
+  <div class="lg:tw-min-h-[calc(197/var(--base-screen)*100vw)] xl:tw-min-h-[197px] tw-bg-cover tw-bg-no-repeat tw-relative hover:tw-opacity-80 tw-delay-75 tw-transition-opacity !tw-bg-center" style="background-image: url({{ $you_may_also_like->image ? $you_may_also_like->image : asset('images/svg/image-placeholder.svg') }});">
     <a href="{{ $you_may_also_like->link }}" class="tw-absolute tw-right-0 tw-top-0 tw-w-full tw-h-full"></a>
   </div>
   <!-- Featured Details -->

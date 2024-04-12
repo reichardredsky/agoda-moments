@@ -1,6 +1,6 @@
 
 <div class="tw-w-full tw-flex tw-flex-col tw-relative tw-h-[calc((340/var(--base-screen))*100vw)] sm:tw-h-[calc((340/640)*100vw)] md:tw-h-[calc((340/768)*100vw)] lg:tw-h-[calc(700/var(--base-screen)*100vw)] xl:tw-h-[700px] tw-bg-cover tw-bg-no-repeat tw-bg-center" 
-  style="background-image: url({{ $influencer_profile->cover_photo['url'] ?? asset('images/backgrounds/profile-cover.png') }});"
+  style="background-image: url({{ $influencer_profile->cover_photo ? $influencer_profile->cover_photo : asset('images/backgrounds/profile-cover.png') }});"
 >
   <div class="tw-absolute tw-top-0 tw-right-0 tw-left-0 tw-h-full tw-w-full tw-z-0" style="background-color: rgba(0, 0, 0, 50%);"></div>
   <div class="tw-absolute tw-top-0 tw-right-0 tw-left-0 tw-h-full tw-w-full tw-z-0" style="background: linear-gradient(to bottom, rgba(0, 0, 0, 0.39) 0%, rgba(0, 0, 0, 0) 44%)"></div>
@@ -23,7 +23,7 @@
     <!-- Profile Details -->
     <div class="tw-mt-[calc(54/var(--base-screen)*100vw)] lg:tw-mt-[calc(68/var(--base-screen)*100vw)] xl:tw-mt-[68px] tw-flex tw-gap-x-[calc(10/var(--base-screen)*100vw)] lg:tw-gap-x-[calc(65/var(--base-screen)*100vw)]  xl:tw-gap-x-[65px]">
       <div class="tw-w-[calc(109.34/var(--base-screen)*100vw)] tw-h-[calc(109.34/var(--base-screen)*100vw)] lg:tw-w-[calc(240.56/var(--base-screen)*100vw)] xl:tw-w-[240.56px] lg:tw-h-[calc(240.56/var(--base-screen)*100vw)] xl:tw-h-[240.56px] tw-rounded-full tw-bg-white">
-        <img src="{{ $influencer_profile->avatar ? $influencer_profile->avatar : 'https://i.pravatar.cc/300' }}" alt="Profile Picture" class="tw-object-cover tw-rounded-full tw-w-full tw-h-full" />
+        <img src="{{ $influencer_profile->avatar ? $influencer_profile->avatar : asset('images/png/profile-placeholder.png') }}" alt="Profile Picture" class="tw-object-cover tw-rounded-full tw-w-full tw-h-full" />
       </div>
       <div class="tw-flex tw-flex-col">
         <div class="tw-flex tw-flex-col tw-w-full">
