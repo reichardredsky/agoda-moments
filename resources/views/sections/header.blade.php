@@ -14,11 +14,24 @@
       </li>
       <li class="tw-hidden lg:tw-block">
         <ul class="tw-flex tw-items-center tw-gap-x-[calc(36/var(--base-screen)*100vw)] xl:tw-gap-x-[36px]">
-          @foreach($menu_items as $item)
-          <li>
-            <a href="{{ $item->url }}" class="tw-text-[#404040] lg:tw-text-[calc(16/var(--base-screen)*100vw)] xl:tw-text-[16px] tw-no-underline tw-text-lg">{{ $item->title }}</a>
-          </li>
-          @endforeach
+          @if(count($menu_items))
+            @foreach($menu_items as $item)
+            <li>
+              <a href="{{ $item->url }}" class="tw-text-[#404040] lg:tw-text-[calc(16/var(--base-screen)*100vw)] xl:tw-text-[16px] tw-no-underline tw-text-lg">{{ $item->title }}</a>
+            </li>
+            @endforeach
+          @else
+            <li>
+              <a href="#" class="tw-text-[#404040] lg:tw-text-[calc(16/var(--base-screen)*100vw)] xl:tw-text-[16px] tw-no-underline tw-text-lg">Rooms</a>
+            </li>
+            <li>
+              <a href="#" class="tw-text-[#404040] lg:tw-text-[calc(16/var(--base-screen)*100vw)] xl:tw-text-[16px] tw-no-underline tw-text-lg">Flights</a>
+            </li>
+            <li>
+              <a href="#" class="tw-text-[#404040] lg:tw-text-[calc(16/var(--base-screen)*100vw)] xl:tw-text-[16px] tw-no-underline tw-text-lg">Today’s deals</a>
+            </li>
+          @endif
+          
         </ul>
       </li>
       @if(is_tax('influencer'))
