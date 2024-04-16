@@ -47,8 +47,8 @@ class App extends Composer
      */
     public function siteBreadcrumbs() {
         $breadcrumbs_arr = [
-            ['name' => __('Home', 'moments'), 'url' => home_url('/')],
-            ['name' => __('Agoda Travel Tips', 'moments'), 'url' => home_url('/traveltips')]
+            ['name' => __('Home', 'moments'), 'url' => 'https://www.agoda.com/'],
+            ['name' => __('Agoda Travel Tips', 'moments'), 'url' => home_url('/')]
         ];
 
         if (is_tax()) {
