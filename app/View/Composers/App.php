@@ -26,7 +26,8 @@ class App extends Composer
             'siteName' => $this->siteName(),
             'siteBreadcrumbs' => $this->siteBreadcrumbs(),
             'copy_right_text' => $this->copyRightText(),
-            'featured_image' => $this->featuredImage()
+            'featured_image' => $this->featuredImage(),
+            'menu_items' => $this->menuItems(),
         ];
     }
 
@@ -82,5 +83,20 @@ class App extends Composer
         $featured_image = get_field('hero_image', 'option');
 
         return $featured_image;
+    }
+
+    private function menuItems()
+    {
+        $menu = wp_get_nav_menu_items('main-menu');
+        $menuItems = [];
+        foreach ($menu as $item) {
+            $menuItems[] = (object) [
+                'title' => $item->title,
+                'url' => $item->url,
+                'target' => $item->target,
+                'active' => $item->current,
+            ];
+        }
+        return $menuItems;
     }
 }
