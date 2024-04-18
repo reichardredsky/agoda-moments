@@ -3,7 +3,6 @@ const modal = (classSelector) => {
     const content = document.querySelector('#modalContent');
     const modalBtn = document.querySelector(classSelector);
     const modalWrapper = document.createElement('div');
-    modalWrapper.classList.add('modal');
     modalWrapper.classList.add('modal-wrapper');
 
 
