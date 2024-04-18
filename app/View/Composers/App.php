@@ -28,7 +28,27 @@ class App extends Composer
             'copy_right_text' => $this->copyRightText(),
             'featured_image' => $this->featuredImage(),
             'menu_items' => $this->menuItems(),
+            'site_languages' => $this->siteLanguages(),
+            'current_language' => $this->currentLanguage(),
         ];
+    }
+
+    public function siteLanguages() {
+        $languages = [];
+        if( function_exists('icl_get_languages') ) {
+            $languages = icl_get_languages('skip_missing=1');
+        }
+
+        return $languages;
+    }
+
+    public function currentLanguage() {
+        $languages = [];
+        if( function_exists('icl_get_languages') ) {
+            $languages = icl_get_languages('skip_missing=1');
+        }
+
+        return $languages[ICL_LANGUAGE_CODE];
     }
 
     /**
@@ -36,8 +56,7 @@ class App extends Composer
      *
      * @return string
      */
-    public function siteName()
-    {
+    public function siteName() {
         return get_bloginfo('name', 'display');
     }
 

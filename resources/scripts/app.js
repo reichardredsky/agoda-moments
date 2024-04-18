@@ -3,6 +3,7 @@ import AgodaSwiper from './moment-swiper.js';
 import SideBar from './sidebar.js';
 import './bootstrap-loader.js';
 import Dropdown from './dropdown.js';
+import Modal from './modal.js';
 
 /**
  * Application entrypoint
@@ -11,7 +12,7 @@ domReady(async () => {
   // ...
 
   SideBar();
-
+  Modal('.open-modal-btn');
   new Dropdown('#dropdown-collapse');
   new Dropdown('#dropdown-collapse-mobile');
   

@@ -42,8 +42,8 @@
         </div>
       </li>
       @endif
-      <li class="tw-hidden lg:tw-block {{ is_tax('influencer') ? '' : 'tw-ml-auto' }}">
-        <img draggable="false" class="tw-w-auto lg:tw-h-[calc(20.1/var(--base-screen)*100vw)] xl:tw-h-[20.1px]" src="@asset('images/svg/flag_en.svg')" />
+      <li class="tw-cursor-pointer open-modal-btn tw-hidden lg:tw-block {{ is_tax('influencer') ? '' : 'tw-ml-auto' }}">
+        <img draggable="false" class="tw-w-auto lg:tw-h-[calc(20.1/var(--base-screen)*100vw)] xl:tw-h-[20.1px]" src="{{ $current_language['country_flag_url'] }}" />
       </li>
     </ul>
   </nav>
@@ -98,3 +98,31 @@
       --}}
   </div>
 </aside>
+
+<div id="modalContent" class="tw-absolute tw-hidden tw-z-[999] tw-top-0 tw-left-0 tw-right-0 tw-w-full tw-h-full tw-justify-center tw-items-center">
+  <div class="containerContenet tw-relative tw-w-full tw-h-full tw-bg-white tw-max-w-[80%] tw-max-h-[80%] lg:tw-max-h-[calc(502/var(--base-screen)*100vw)] lg:tw-max-w-[calc(800/var(--base-screen)*100vw)] xl:tw-max-w-[800px] xl:tw-max-h-[502px]">
+    <div class="tw-flex tw-flex-col tw-w-full">
+      <h4 class="tw-uppercase tw-px-[26px] tw-py-[14px] tw-bg-gray-100 tw-text-[12px] tw-text-gray-500">Current language</h4>
+       <div class="tw-w-full tw-px-5 tw-py-3">
+       @foreach(array_filter($site_languages, function($item) {
+        return $item['active'];
+       }) as $lang)
+        <div class="tw-flex tw-items-center tw-gap-x-2 tw-px-2 tw-border-l-8 tw-border-l-blue-500">
+          <img src="{{ $lang['country_flag_url'] }}" class="tw-w-[20px] tw-h-[20px]" />
+          <span class="tw-text-[#2A2A2E] tw-text-[16px] tw-font-agoda-sans-text tw-font-[400]">{{ $lang['translated_name'] }}</span>
+        </div>
+        @endforeach
+       </div>
+      <h4 class="tw-uppercase tw-px-[26px] tw-py-[14px] tw-bg-gray-100 tw-text-[12px] tw-text-gray-500">All languages</h4>
+      <div class="tw-w-full tw-px-5 tw-py-3">
+        @foreach($site_languages as $lang)
+          <a href="{{ $lang['url'] }}" class="tw-flex tw-items-center tw-gap-x-2 tw-my-2 tw-px-2 {{ $lang['active'] ? 'tw-border-l-8 tw-border-l-blue-500' : '' }}">
+            <img src="{{ $lang['country_flag_url'] }}" class="tw-w-[20px] tw-h-[20px]" />
+            <span class="tw-text-[#2A2A2E] tw-text-[16px] tw-font-agoda-sans-text tw-font-[400]">{{ $lang['translated_name'] }}</span>
+          </a>
+        @endforeach
+       </div>
+    </div>
+    <button class="close-btn tw-absolute -tw-top-[30px] tw-right-[10px] tw-text-white">X</button>
+  </div>
+</div>

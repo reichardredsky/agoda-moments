@@ -98,3 +98,15 @@ body {
 article.Bootstrap img {
     margin: 20px 0;
 }
+
+.modal-wrapper {
+    background-color: #000;
+    opacity: 0.6;
+    position: fixed;
+    width: 100vw;
+    height: 100%;
+    z-index: 888;
+    top: 0;
+    left: 0;
+    right: 0;
+}
