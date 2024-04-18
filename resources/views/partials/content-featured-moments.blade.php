@@ -1,7 +1,7 @@
 <div class="tw-relative lg:tw-mt-[calc(-227/var(--base-screen)*100vw)] xl:tw-mt-[-227px]">
   @if ( count($top_10_travel_tips) > 0 )
   <h2 class="tw-font-agoda-sans-stemless max-screen tw-my-[calc(30/var(--base-screen)*100vw)] lg:tw-my-0 tw-font-[400] tw-text-[calc((28/var(--base-screen))*100vw)] lg:tw-text-[calc((48/var(--base-screen))*100vw)] xl:tw-text-[48px] lg:tw-mb-[calc((38/var(--base-screen))*100vw)] xl:tw-mb-[38px] lg:tw-text-white">
-    {!!  $title !!}
+    {!!  $header_title !!}
   </h2>
   <!-- Featured Images Carousel -->
 

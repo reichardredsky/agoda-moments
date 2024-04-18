@@ -114,6 +114,12 @@ add_action('after_setup_theme', function () {
      * Add custom image sizes.
      */
     add_image_size('featured', 1990, 700, true);
+
+    /**
+     * Add management of taxonomy translations for editors.
+     * */
+    $role = get_role( 'editor' );
+    $role->add_cap( 'wpml_manage_string_translation', true );
 }, 20);
 
 /**
@@ -207,3 +213,4 @@ add_filter('post_type_link', function ($post_link, $post) {
 
     return $post_link;
 }, 10, 2);
+
