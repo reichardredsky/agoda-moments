@@ -116,7 +116,7 @@
       <h4 class="tw-uppercase tw-px-[26px] tw-py-[14px] tw-bg-gray-100 tw-text-[12px] tw-text-gray-500">All languages</h4>
       <div class="tw-w-full tw-px-5 tw-py-3">
         @foreach($site_languages as $lang)
-          <a href="{{ $lang['url'] }}" class="tw-flex tw-items-center tw-gap-x-2 tw-my-2 tw-px-2 {{ $lang['active'] ? 'tw-border-l-8 tw-border-l-blue-500' : '' }}">
+          <a href="{{ $lang['url'] }}" class="tw-flex tw-items-center tw-gap-x-2 tw-my-2 tw-px-2 {{ $lang['active'] ? 'tw-border-l-8 tw-border-l-blue-500' : 'tw-border-l-8 tw-border-l-white' }}">
             <img src="{{ $lang['country_flag_url'] }}" class="tw-w-[20px] tw-h-[20px]" />
             <span class="tw-text-[#2A2A2E] tw-text-[16px] tw-font-agoda-sans-text tw-font-[400]">{{ $lang['translated_name'] }}</span>
           </a>
