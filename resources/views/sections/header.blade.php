@@ -53,7 +53,7 @@
 <aside id="sidebar" class="sm:tw-hidden tw-absolute tw-z-[100] tw-left-0 tw-z-[1000] tw-min-w-[240px] tw-max-w-[440px] tw-w-[80%] tw-h-screen tw-transition-transform -tw-translate-x-full tw-top-0" aria-label="Sidebar">
   <div class="tw-flex tw-flex-col tw-h-full tw-overflow-y-auto tw-bg-gray-50 dark:tw-bg-gray-800">
       <div class="tw-flex" style="height: calc(44px * 4); background-image: url('https://cdn6.agoda.net/images/mvc/phone/menu/menu-header.jpg'); background-size: 100vw; background-position: 50%;">
-          <img class="tw-w-[56px] tw-h-[25px]" style="margin: 24px auto;" src="https://wpagodastg.wp.agoda.com/wp-content/themes/agoda-travel-guides/dist/images/agoda-logo-white_db509243.svg" />
+          <img class="tw-w-[56px] tw-h-[25px]" style="margin: 24px auto;" src="https://agoda.com/wp-content/themes/agoda-travel-guides/dist/images/agoda-logo-white_db509243.svg" />
       </div>
 
       <div class="tw-w-full tw-flex">
