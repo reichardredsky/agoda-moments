@@ -28,7 +28,7 @@
       <div class="tw-flex tw-flex-col">
         <div class="tw-flex tw-flex-col tw-w-full">
           <!-- Profile Name -->
-          <h2 class="tw-text-white tw-leading-[calc(33.6/var(--base-screen)*100vw)] lg:tw-leading-none tw-font-agoda-sans-stemless tw-font-[900] tw-text-[calc(28/var(--base-screen)*100vw)] lg:tw-text-[calc(48/var(--base-screen)*100vw)] xl:tw-text-[48px]">
+          <h2 class="hyphens-auto tw-text-white tw-leading-[calc(33.6/var(--base-screen)*100vw)] lg:tw-leading-none tw-font-agoda-sans-stemless tw-font-[900] tw-text-[calc(28/var(--base-screen)*100vw)] lg:tw-text-[calc(48/var(--base-screen)*100vw)] xl:tw-text-[48px]">
             {!! $influencer_profile->name ?? '@Zonnet' !!}
           </h2>
           <!-- Profile  -->
