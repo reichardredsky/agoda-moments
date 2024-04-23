@@ -1,5 +1,5 @@
 
-<div class="tw-w-full tw-flex tw-flex-col tw-relative tw-h-[calc((340/var(--base-screen))*100vw)] sm:tw-h-[calc((340/640)*100vw)] md:tw-h-[calc((340/768)*100vw)] lg:tw-h-[calc(700/var(--base-screen)*100vw)] xl:tw-h-[700px] tw-bg-cover tw-bg-no-repeat tw-bg-center" 
+<div class="tw-w-full tw-flex tw-flex-col tw-relative tw-pb-5 tw-min-h-[calc((340/var(--base-screen))*100vw)] sm:tw-h-[calc((340/640)*100vw)] md:tw-h-[calc((340/768)*100vw)] lg:tw-h-[calc(700/var(--base-screen)*100vw)] xl:tw-h-[700px] tw-bg-cover tw-bg-no-repeat tw-bg-center" 
   style="background-image: url({{ $influencer_profile->cover_photo ? $influencer_profile->cover_photo : asset('images/backgrounds/profile-cover.png') }});"
 >
   <div class="tw-absolute tw-top-0 tw-right-0 tw-left-0 tw-h-full tw-w-full tw-z-0" style="background-color: rgba(0, 0, 0, 50%);"></div>
