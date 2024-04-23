@@ -6,7 +6,7 @@
   </a>
   <a class="tw-relative hover:tw-opacity-95" href="{{ $link }}">
     <div class="tw-relative tw-flex tw-flex-col tw-text-[#2A2A2E] tw-font-[400] tw-pr-3 tw-mt-[calc(10/var(--base-screen)*100vw)] lg:tw-mt-0 lg:tw-gap-y-[calc(2/var(--base-screen)*100vw)] tw-line-clamp-3 ">
-      <span class="tw-text-[calc(17/var(--base-screen)*100vw)] lg:tw-text-[calc(22.79/var(--base-screen)*100vw)] xl:tw-text-[22.79px] tw-text-[#2E2D2A] tw-font-agoda-sans-stemless tw-font-[900]">
+      <span class="break-words tw-line-clamp-1 tw-text-[calc(17/var(--base-screen)*100vw)] lg:tw-text-[calc(22.79/var(--base-screen)*100vw)] xl:tw-text-[22.79px] tw-text-[#2E2D2A] tw-font-agoda-sans-stemless tw-font-[900]">
         {!! $name !!}
       </span>
       <p class="tw-line-clamp-3 tw-text-[calc(14/var(--base-screen)*100vw)] lg:tw-text-[calc(17/var(--base-screen)*100vw)] xl:tw-text-[17px]">{!! $description !!}</p>
