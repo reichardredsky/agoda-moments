@@ -41,10 +41,18 @@ body {
     --card-gap: calc(30/var(--base-screen)*100);
 }
 
+.break-words {
+    word-break: break-word;
+}
+
 @screen sm {
     :root {
         --base-screen: 640;
         --card-gap: calc(30/var(--base-screen)*100);
+    }
+
+    .break-words {
+        word-break: normal;
     }
 }
 
