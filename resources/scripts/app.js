@@ -4,13 +4,18 @@ import SideBar from './sidebar.js';
 import './bootstrap-loader.js';
 import Dropdown from './dropdown.js';
 import Modal from './modal.js';
-import Search from './search.js';
+import search from './search.js';
 
 /**
  * Application entrypoint
  */
 domReady(async () => {
   // ...
+
+  console.log(search)
+
+  const Search = search.Search;
+  const ToggleSearch = search.ToggleSearch;
 
   SideBar();
   Modal('.open-modal-btn');
@@ -67,6 +72,7 @@ domReady(async () => {
 
   Search('.search-input');
   Search('.mobile-search-input');
+  ToggleSearch('.toggle-search');
 });
 
 /**

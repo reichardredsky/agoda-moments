@@ -45,8 +45,8 @@ class TopTravelTips extends Composer
                 $influencer = wp_get_post_terms($items->ID, 'influencer')[0];
                 $influencer->avatar = get_field('profile_picture', $influencer);
                 $influencer->link = get_term_link($influencer);
+
                 $current_language = apply_filters('wpml_current_language', null);
-                
                 $date = $current_language === 'th' ? $this->getBuddhistDate( date_create($items->post_date) ) : get_the_date('F j, Y', $items->ID);
 
                 return [
@@ -71,6 +71,7 @@ class TopTravelTips extends Composer
         $year = (int) $date->format('Y') + 543;
         $month = $date->format('F');
         $day = (int) $date->format('j');
+        $month = __( $month, 'moments');
 
         return "{$day} {$month} {$year}";
     }

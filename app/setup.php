@@ -125,6 +125,7 @@ add_action('after_setup_theme', function () {
      * Search Function
      */
 
+
      function search()
      {
          $string = $_POST['search'];
@@ -193,6 +194,7 @@ add_action('after_setup_theme', function () {
  
      add_action('wp_ajax_nopriv_search', 'search');
      add_action('wp_ajax_search', 'search');
+
 }, 20);
 
 /**

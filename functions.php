@@ -140,3 +140,5 @@ add_action('wp_ajax_load_more_influencers', 'load_more_influencers');
 // foreach ($strings as $string) {
 //     do_action('wpml_register_single_string', 'moments', '', $string);
 // }
+
+// do_action('wpml_register_single_string', 'moments', '', 'Popular Agoda Travel Experts');

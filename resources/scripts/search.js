@@ -1,3 +1,4 @@
+
 const search = (inputSelector) => {
     const search = document.querySelectorAll(inputSelector);
     const resultContainers = document.querySelectorAll('.search-bar-result');
