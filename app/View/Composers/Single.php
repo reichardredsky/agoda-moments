@@ -46,7 +46,9 @@ class Single extends Composer
         $influencer = wp_get_post_terms($post->ID, 'influencer')[0];
         $influencer->avatar = get_field('profile_picture', $influencer);
         $influencer->link = get_term_link($influencer);
-        $influencer->date = get_the_date('F j, Y', $post->ID);
+        $current_language = apply_filters('wpml_current_language', null);
+        $date = $current_language === 'th' ? $this->getBuddhistDate( date_create($post->post_date) ) : get_the_date('F j, Y', $post->ID);
+        $influencer->date = $date;
 
         return $influencer;
     }
@@ -85,6 +87,16 @@ class Single extends Composer
         wp_reset_postdata();
 
         return $you_may_also_like;
+    }
+
+    private function getBuddhistDate( \DateTime $date)
+    {
+        $year = (int) $date->format('Y') + 543;
+        $month = $date->format('F');
+        $day = (int) $date->format('j');
+        $month = __( $month, 'moments');
+
+        return "{$day} {$month} {$year}";
     }
 
 }
