@@ -120,6 +120,79 @@ add_action('after_setup_theme', function () {
      * */
     $role = get_role( 'editor' );
     $role->add_cap( 'wpml_manage_string_translation', true );
+
+    /**
+     * Search Function
+     */
+
+     function search()
+     {
+         $string = $_POST['search'];
+ 
+         $results = [
+             'posts' => [],
+             'influencers' => [],
+             'countries' => []
+         ];
+ 
+         $posts_query = new \WP_Query([
+             'post_type' => 'traveltips',
+             'posts_per_page' => 10,
+             's' => $string,
+         ]);
+ 
+         $posts = array_map( function ( $post ) {
+             return (object) [
+                 'title' => $post->post_title,
+                 'link' => get_permalink($post),
+                 'excerpt' => $post->post_excerpt,
+                 'thumbnail' => get_the_post_thumbnail_url($post, 'thumbnail'),
+             ];
+         }, $posts_query->posts);
+ 
+         $results['posts'] = $posts;
+ 
+         $influencers_query = new \WP_Term_Query([
+             'taxonomy' => 'influencer',
+             'name__like' => $string,
+         ]);
+ 
+         $influencers = array_map( function ( $influencer ) {
+             return (object) [
+                 'name' => $influencer->name,
+                 'link' => get_term_link($influencer),
+                 'description' => $influencer->description,
+                 'profile_picture' => get_field('profile_picture', $influencer),
+             ];
+         }, $influencers_query->terms);
+ 
+         $results['influencers'] = $influencers;
+ 
+         $countries_query = new \WP_Term_Query([
+             'taxonomy' => 'country',
+             'name__like' => $string,
+         ]);
+ 
+         $countries = array_map( function ( $country ) {
+             return (object) [
+                 'name' => $country->name,
+                 'link' => get_term_link($country),
+                 'description' => $country->description,
+                 'thumbnail' => get_field('country_image', $country)['sizes']['thumbnail'] ?? '',
+             ];
+         }, $countries_query->terms);
+ 
+         $results['countries'] = $countries;
+ 
+         wp_reset_postdata();
+ 
+         echo json_encode($results);
+ 
+         die();
+     }
+ 
+     add_action('wp_ajax_nopriv_search', 'search');
+     add_action('wp_ajax_search', 'search');
 }, 20);
 
 /**

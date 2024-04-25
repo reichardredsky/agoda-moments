@@ -85,17 +85,13 @@
         </ul>
       </div>
       
-      {{--
-        <div class="tw-flex tw-flex-col tw-w-full pl-5 mt-3 tw-border-b-2">
-          <h4 class="mobile-menu__section-title">Settings</h4>
-          <div>
-            <button class="btn btn-link header__language-switcher-button" data-toggle="modal" data-target="#language-switcher">
-              <span>Language</span>
-              <img src="{{ $current_language['flag'] }}" alt="{{ $current_language['name'] }}" class="header__language-flag">
-            </button>
-          </div>
-        </div>
-      --}}
+      <div class="tw-flex tw-flex-col tw-w-full tw-p-5 tw-mt-3 tw-border-b-2">
+        <h4 class="tw-text-[#999999] tw-font-thin tw-text-[12px]">Settings</h4>
+        <button class="open-modal-btn tw-flex tw-gap-x-5 tw-items-center">
+          <span class="">Language</span>
+          <img src="{{ $current_language['country_flag_url'] }}" class="header__language-flag">
+        </button>
+      </div>
   </div>
 </aside>
 

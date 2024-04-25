@@ -99,7 +99,7 @@ class App extends Composer
     }
 
     public function featuredImage() {
-        $featured_image = get_field('hero_image', 'option')['url'];
+        $featured_image = get_field('hero_image', 'option')['url'] ?? null;
 
 
         return $featured_image;
