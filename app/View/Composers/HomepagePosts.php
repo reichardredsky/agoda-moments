@@ -42,6 +42,8 @@ class HomepagePosts extends Composer
         if ( $query->have_posts() ) {
             $posts = array_map( function ( $post ) {
                 $influencer = wp_get_post_terms( $post->ID, 'influencer' )[0];
+                $current_language = apply_filters('wpml_current_language', null);
+                $date = $current_language === 'th' ? $this->getBuddhistDate( date_create($post->post_date) ) : get_the_date('F j, Y', $post->ID);
 
                 return (object) [
                     'title' => $post->post_title,
@@ -51,7 +53,7 @@ class HomepagePosts extends Composer
                     'influencer_name' => $influencer->name,
                     'influencer_link' => get_term_link($influencer),
                     'influencer_avatar' => get_field('profile_picture', $influencer),
-                    'date' => get_the_date('F j, Y', $post),
+                    'date' => $date,
                 ];
 
             }, $query->posts);
@@ -62,6 +64,16 @@ class HomepagePosts extends Composer
         }
 
         return [];
+    }
+
+    private function getBuddhistDate( \DateTime $date)
+    {
+        $year = (int) $date->format('Y') + 543;
+        $month = $date->format('F');
+        $day = (int) $date->format('j');
+        $month = __( $month, 'moments');
+
+        return "{$day} {$month} {$year}";
     }
     
 }

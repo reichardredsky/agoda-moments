@@ -115,10 +115,13 @@ class TaxonomyInfluencer extends Composer
             $influencer_avatar = get_field('profile_picture', $influencer);
             $influencer_link = get_term_link($influencer);
 
+            $current_language = apply_filters('wpml_current_language', null);
+            $date = $current_language === 'th' ? $this->getBuddhistDate( date_create($post->post_date) ) : get_the_date('F j, Y', $post->ID);
+
             return (object) [
                 'title' => $post->post_title,
                 'link' => get_permalink($post),
-                'date' => get_the_date('F j, Y', $post),
+                'date' => $date,
                 'excerpt' => get_the_excerpt($post),
                 'influencer_avatar' => $influencer_avatar,
                 'influencer_link' => $influencer_link,
@@ -153,7 +156,11 @@ class TaxonomyInfluencer extends Composer
             $influencer = wp_get_post_terms($post->ID, 'influencer')[0];
             $influencer->avatar = get_field('profile_picture', $influencer);
             $influencer->link = get_term_link($influencer);
-            
+
+            $current_language = apply_filters('wpml_current_language', null);
+            $date = $current_language === 'th' ? $this->getBuddhistDate( date_create($post->post_date) ) : get_the_date('F j, Y', $post->ID);
+
+
             return [
                 'title' => $post->post_title,
                 'content' => $post->post_content,
@@ -161,7 +168,7 @@ class TaxonomyInfluencer extends Composer
                 'link' => get_permalink($post->ID),
                 'excerpt' => $post->post_excerpt,
                 'influencer' => $influencer,
-                'post_date' => get_the_date('F j, Y', $post->ID),
+                'post_date' => $date,
                 'views' => get_field('views', $post->ID) !== null ? intval( get_field('views', $post->ID) ) : 0,
             ];
         });
@@ -194,5 +201,15 @@ class TaxonomyInfluencer extends Composer
         }, $terms);
 
         return $terms;
+    }
+
+    private function getBuddhistDate( \DateTime $date)
+    {
+        $year = (int) $date->format('Y') + 543;
+        $month = $date->format('F');
+        $day = (int) $date->format('j');
+        $month = __( $month, 'moments');
+
+        return "{$day} {$month} {$year}";
     }
 }

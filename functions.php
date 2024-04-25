@@ -123,17 +123,22 @@ add_action('wp_ajax_load_more_influencers', 'load_more_influencers');
 
 
 // $strings = [
-//     'Sorry!',
-//     'We looked everywhere, but couldn\'t find the page you requested. Shall we start a new exploration?',
-//     'Take me there!',
-//     'Recently Updated Travel Tips',
-//     'Top Travel Tips',
-//     'No top travel tips found.',
-//     'You may also like',
-//     'Load more',
-//     'All Countries'
+//     'January',
+//     'February',
+//     'March',
+//     'April',
+//     'May',
+//     'June',
+//     'July',
+//     'August',
+//     'September',
+//     'October',
+//     'November',
+//     'December'
 // ];
 
 // foreach ($strings as $string) {
 //     do_action('wpml_register_single_string', 'moments', '', $string);
 // }
+
+// do_action('wpml_register_single_string', 'moments', '', 'Popular Agoda Travel Experts');

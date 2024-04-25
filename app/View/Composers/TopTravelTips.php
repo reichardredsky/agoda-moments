@@ -43,6 +43,9 @@ class TopTravelTips extends Composer
                 $influencer = wp_get_post_terms($items->ID, 'influencer')[0];
                 $influencer->avatar = get_field('profile_picture', $influencer);
                 $influencer->link = get_term_link($influencer);
+
+                $current_language = apply_filters('wpml_current_language', null);
+                $date = $current_language === 'th' ? $this->getBuddhistDate( date_create($items->post_date) ) : get_the_date('F j, Y', $items->ID);
                 
                 return [
                     'title' => $items->post_title,
@@ -51,7 +54,7 @@ class TopTravelTips extends Composer
                     'link' => get_permalink($items->ID),
                     'excerpt' => $items->post_excerpt,
                     'influencer' => $influencer,
-                    'post_date' => get_the_date('F j, Y', $items->ID),
+                    'post_date' => $date,
                     'views' => get_field('views', $items->ID) !== null ? intval( get_field('views', $items->ID) ) : 0,
                 ];
             });
@@ -59,5 +62,15 @@ class TopTravelTips extends Composer
         wp_reset_postdata();
         
         return $_topTravelTips->sortBy('views', SORT_NUMERIC)->reverse()->toArray();
+    }
+
+    private function getBuddhistDate( \DateTime $date)
+    {
+        $year = (int) $date->format('Y') + 543;
+        $month = $date->format('F');
+        $day = (int) $date->format('j');
+        $month = __( $month, 'moments');
+
+        return "{$day} {$month} {$year}";
     }
 }
