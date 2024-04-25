@@ -49,8 +49,15 @@ const search = (inputSelector) => {
 
 };
 
-const toggleSearch = () => {
+const toggleSearch = (toggleSelector) => {
+    const toggle = document.querySelector(toggleSelector);
+
+    if (toggle) {
+        toggle.addEventListener('focus', () => {
+            // 
+        });
+    }
 
 }
 
-export default search;
+export default {ToggleSearch: toggleSearch, Search: search};
