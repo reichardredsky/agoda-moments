@@ -26,7 +26,7 @@
                 </li>
                 @foreach ( $categories as $category )
                   <li class="hover:tw-bg-gray-50">
-                    <a href="?country={{ $category->slug }}" class="tw-w-full tw-text-[#5392F9] tw-text-[calc(18/var(--base-screen)*100vw)] xl:tw-text-[28px] tw-font-medium tw-py-[calc(12/var(--base-screen)*100vw)] tw-px-[calc(27/var(--base-screen)*100vw)] tw-text-center tw-inline-flex tw-items-center">
+                    <a onclick="appendToUrl('{{ $category->slug }}')" href="#" class="tw-w-full tw-text-[#5392F9] tw-text-[calc(18/var(--base-screen)*100vw)] xl:tw-text-[28px] tw-font-medium tw-py-[calc(12/var(--base-screen)*100vw)] tw-px-[calc(27/var(--base-screen)*100vw)] tw-text-center tw-inline-flex tw-items-center">
                       {{ $category->name }}
                     </a>
                   </li>
@@ -80,7 +80,7 @@
                 </li>
                 @foreach ( $categories as $category )
                   <li class="hover:tw-bg-gray-50">
-                    <a href="?country={{ $category->slug }}" class="tw-w-full tw-text-[#5392F9] tw-text-[calc(18/var(--base-screen)*100vw)] xl:tw-text-[28px] tw-font-medium tw-py-[calc(12/var(--base-screen)*100vw)] tw-px-[calc(27/var(--base-screen)*100vw)] tw-text-center tw-inline-flex tw-items-center">
+                    <a onclick="appendToUrl('{{ $category->slug }}')" href="#" class="tw-w-full tw-text-[#5392F9] tw-text-[calc(18/var(--base-screen)*100vw)] xl:tw-text-[28px] tw-font-medium tw-py-[calc(12/var(--base-screen)*100vw)] tw-px-[calc(27/var(--base-screen)*100vw)] tw-text-center tw-inline-flex tw-items-center">
                       {{ $category->name }}
                     </a>
                   </li>
@@ -106,3 +106,15 @@
     </p>
   @endif
 </div>
+
+<script>
+
+  function appendToUrl( url )
+  {
+    const parser = new URL(window.location);
+    parser.searchParams.set('country', url);
+    
+    window.location = parser.href;
+  }
+
+</script>

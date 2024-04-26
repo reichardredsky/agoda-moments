@@ -55,20 +55,12 @@ class Single extends Composer
 
     public function youMayAlsoLike()
     {
-        $current_influencer = wp_get_post_terms(get_queried_object_id(), 'influencer')[0];
 
         $args = [
             'post_type' => 'travel-tips',
             'posts_per_page' => 10,
             'post_status' => 'publish',
             'post__not_in' => [get_queried_object_id()],
-            'tax_query' => [
-                [
-                    'taxonomy' => 'influencer',
-                    'field' => 'term_id',
-                    'terms' => $current_influencer->term_id,
-                ]
-            ]
         ];
 
         $query = new \WP_Query($args);

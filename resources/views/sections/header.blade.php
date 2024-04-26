@@ -35,14 +35,16 @@
         </ul>
       </li>
       @if(is_tax('influencer'))
-      <li class="tw-ml-auto tw-hidden lg:tw-block">
+      {{--
+        <li class="tw-ml-auto tw-hidden lg:tw-block">
         <div class="tw-flex tw-items-center tw-gap-x-[calc(23/var(--base-screen)*100vw)] xl:tw-gap-x-[23px]">
           <img draggable="false" class="lg:tw-w-[calc(32.1/var(--base-screen)*100vw)] lg:tw-h-[calc(32.1/var(--base-screen)*100vw)] xl:tw-w-[32.1px] xl:tw-h-[32.1px]" src="@asset('images/svg/search_outline.svg')" />
           <input id="headerSearch" class="tw-w-[calc(266/var(--base-screen)*100vw)] xl:tw-w-[266px] tw-font-[400] tw-border-0 lg:tw-text-[calc(16/var(--base-screen)*100vw)] xl:tw-text-[16px] placeholder:tw-text-[#2A2A2E] tw-text-[#2A2A2E] placeholder:tw-font-agoda-sans-text placeholder:tw-font-[400] placeholder:tw-text-[calc(16/var(--base-screen)*100vw)] xl:placeholder:tw-text-[16px] tw-outline-none tw-text-start focus:tw-ring-0" placeholder="Explore Country, City guides" />
         </div>
       </li>
+        --}}
       @endif
-      <li class="tw-cursor-pointer open-modal-btn tw-hidden lg:tw-block {{ is_tax('influencer') ? '' : 'tw-ml-auto' }}">
+      <li class="tw-ml-auto tw-cursor-pointer open-modal-btn tw-hidden lg:tw-block {{ is_tax('influencer') ? '' : 'tw-ml-auto' }}">
         <img draggable="false" class="tw-w-auto lg:tw-h-[calc(20.1/var(--base-screen)*100vw)] xl:tw-h-[20.1px]" src="{{ $current_language['country_flag_url'] }}" />
       </li>
     </ul>
