@@ -39,7 +39,8 @@
         {!! the_content() !!}
       </article>
 
-      <div class="!tw-mt-[calc(26/var(--base-screen)*100vw)] lg:!tw-mt-[calc(28/var(--base-screen)*100vw)] xl:!tw-mt-[28px] !tw-border-t !tw-border-t-[#00000040] !tw-pt-[calc(23/var(--base-screen)*100vw)] lg:!tw-pt-[calc(45/var(--base-screen)*100vw)] xl:!tw-pt-[45px]">
+      <div class="!tw-flex !tw-flex-column !tw-items-center tw-gap-x-[10px] !tw-mt-[calc(26/var(--base-screen)*100vw)] lg:!tw-mt-[calc(28/var(--base-screen)*100vw)] xl:!tw-mt-[28px] !tw-border-t !tw-border-t-[#00000040] !tw-pt-[calc(23/var(--base-screen)*100vw)] lg:!tw-pt-[calc(45/var(--base-screen)*100vw)] xl:!tw-pt-[45px]">
+        <i class="fa-solid fa-share-nodes tw-text-[25px]"></i>
         {!! $social_share !!}
       </div>
     </div>

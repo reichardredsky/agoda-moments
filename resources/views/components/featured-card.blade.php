@@ -3,8 +3,8 @@
       style="background: linear-gradient(180deg, rgba(0, 0, 0, 0) 52.69%, rgba(0, 0, 0, 0.75) 100%),  {{ $image ? 'url('.$image.')' : 'url('.asset('images/svg/image-placeholder.svg').')' }};" 
       class="!tw-bg-no-repeat !tw-bg-cover tw-relative !tw-bg-center"
   >
-    <a href="{{ $link }}" class="tw-absolute tw-bottom-[calc(19.5/var(--base-screen)*100vw)] lg:tw-bottom-[calc(26.73/var(--base-screen)*100vw)] xl:tw-bottom-[26.73px]">
-      <p class="hyphens-auto hover:tw-underline tw-text-[calc(22/var(--base-screen)*100vw)] lg:tw-text-[calc(32.12/var(--base-screen)*100vw)] xl:tw-text-[32.12px] tw-text-white tw-font-[700] tw-px-5 tw-line-clamp-1">
+    <a href="{{ $link }}" class="tw-h-full tw-w-full tw-flex tw-relative">
+      <p class="tw-absolute tw-bottom-[calc(19.5/var(--base-screen)*100vw)] lg:tw-bottom-[calc(26.73/var(--base-screen)*100vw)] xl:tw-bottom-[26.73px] hyphens-auto hover:tw-underline tw-text-[calc(22/var(--base-screen)*100vw)] lg:tw-text-[calc(32.12/var(--base-screen)*100vw)] xl:tw-text-[32.12px] tw-text-white tw-font-[700] tw-px-5 tw-line-clamp-1">
         {!! $title !!}
       </p>
     </a>
