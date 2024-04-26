@@ -12,8 +12,8 @@
           <img src="https://www.agoda.com/wp-content/themes/agoda-travel-guides/dist/images/agoda-logo_688a8f9e.svg" alt="Agoda Moments" class="tw-w-auto tw-h-[calc((32/var(--base-screen))*100vw)] md:tw-h-[calc((32/1023)*100vw)] lg:tw-h-[calc(32/var(--base-screen)*100vw)] xl:tw-h-[32px]" />
         </a>
       </li>
-      <li class="tw-hidden lg:tw-block">
-        <ul class="tw-flex tw-items-center tw-gap-x-[calc(36/var(--base-screen)*100vw)] xl:tw-gap-x-[36px]">
+      <li class="tw-hidden lg:tw-block tw-mr-auto">
+        <ul class="toggle-serarch-hide tw-flex tw-items-center tw-gap-x-[calc(36/var(--base-screen)*100vw)] xl:tw-gap-x-[36px]">
           @if(count($menu_items))
             @foreach($menu_items as $item)
             <li>
@@ -35,10 +35,39 @@
         </ul>
       </li>
       @if(is_tax('influencer'))
-      <li class="tw-ml-auto tw-hidden lg:tw-block">
-        <div class="tw-flex tw-items-center tw-gap-x-[calc(23/var(--base-screen)*100vw)] xl:tw-gap-x-[23px]">
+      <li class="tw-hidden lg:tw-block">
+        <div class="tw-flex tw-relative tw-items-center tw-gap-x-[calc(23/var(--base-screen)*100vw)] xl:tw-gap-x-[23px]">
           <img draggable="false" class="lg:tw-w-[calc(32.1/var(--base-screen)*100vw)] lg:tw-h-[calc(32.1/var(--base-screen)*100vw)] xl:tw-w-[32.1px] xl:tw-h-[32.1px]" src="@asset('images/svg/search_outline.svg')" />
-          <input class="toggle-search tw-w-[calc(266/var(--base-screen)*100vw)] xl:tw-w-[266px] tw-font-[400] tw-border-0 lg:tw-text-[calc(16/var(--base-screen)*100vw)] xl:tw-text-[16px] placeholder:tw-text-[#2A2A2E] tw-text-[#2A2A2E] placeholder:tw-font-agoda-sans-text placeholder:tw-font-[400] placeholder:tw-text-[calc(16/var(--base-screen)*100vw)] xl:placeholder:tw-text-[16px] tw-outline-none tw-text-start focus:tw-ring-0" placeholder="Explore Country, City guides" />
+          <div class="tw-flex tw-flex-col tw-w-full tw-relative">
+            <input class="toggle-search tw-w-[calc(266/var(--base-screen)*100vw)] xl:tw-w-[266px] tw-font-[400] tw-border-0 lg:tw-text-[calc(16/var(--base-screen)*100vw)] xl:tw-text-[16px] placeholder:tw-text-[#2A2A2E] tw-text-[#2A2A2E] placeholder:tw-font-agoda-sans-text placeholder:tw-font-[400] placeholder:tw-text-[calc(16/var(--base-screen)*100vw)] xl:placeholder:tw-text-[16px] tw-outline-none tw-text-start focus:tw-ring-0" placeholder="Explore Country, City guides" />
+            <div class="toggle-search-result tw-hidden tw-w-full tw-absolute tw-bg-white tw-z-[999] tw-mt-[calc(57/var(--base-screen)*100vw)] xl:tw-mt-[57px]">
+              <ul>
+                <li class="tw-p-2 hover:tw-bg-[#fcdfcf] hover:tw-cursor-pointer">
+                  <a href="#" class="tw-text-[calc(12/var(--base-screen)*100vw)] xl:tw-text-[12px] tw-w-full tw-flex tw-gap-x-[8px]">
+                    <i class="fa-solid fa-newspaper"></i>
+                    <span>Bangkok Thailand</span></a>
+                  </a>
+                </li>
+
+                <li class="tw-p-2 hover:tw-bg-[#fcdfcf] hover:tw-cursor-pointer">
+                  <a href="#" class="tw-text-[calc(12/var(--base-screen)*100vw)] xl:tw-text-[12px] tw-w-full tw-flex tw-gap-x-[8px]">
+                    <i class="fa-solid fa-newspaper"></i>
+                    <span>Bangkok Thailand</span></a>
+                  </a>
+                </li>
+
+                <li class="tw-p-2 hover:tw-bg-[#fcdfcf] hover:tw-cursor-pointer">
+                  <a href="#" class="tw-text-[calc(12/var(--base-screen)*100vw)] xl:tw-text-[12px] tw-w-full tw-flex tw-gap-x-[8px]">
+                    <i class="fa-solid fa-newspaper"></i>
+                    <span>Bangkok Thailand</span></a>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <button class="toggle-close-btn tw-hidden tw-absolute tw-right-0 tw-w-[20px] tw-h-[20px]">
+            <i class="fa-regular fa-circle-xmark"></i>
+          </button>
         </div>
       </li>
       @endif
