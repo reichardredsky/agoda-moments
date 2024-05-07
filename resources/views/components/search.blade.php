@@ -19,4 +19,4 @@
     <i class="fas fa-search tw-text-white tw-text-[calc(17.69/var(--base-screen)*100vw)] lg:tw-text-[calc(35/var(--base-screen)*100vw)] xl:tw-text-[35px]"></i>
   </button>
 </div>
-<div id="searchBarResult" class="tw-hidden tw-w-full tw-absolute tw-max-w-[80%] tw-mt-40 tw-overflow-hidden tw-px-5 tw-bg-white tw-rounded-xl tw-d-none"></div>
+@include('components.search-result-container')

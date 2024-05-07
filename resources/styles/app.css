@@ -13,9 +13,20 @@
 .Bootstrap {
     ol,
         ul {
-        list-style: unset;
-        margin: 0;
-        padding: 0;
+            margin: 20px 0px !important;
+            padding: 0 40px !important;
+    }
+}
+
+.Bootstrap {
+    ol {
+        list-style-type: decimal !important;
+    }
+}
+
+.Bootstrap {
+    ul {
+        list-style-type: disc !important;
     }
 }
 

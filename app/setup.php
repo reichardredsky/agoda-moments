@@ -15,6 +15,123 @@ use function Roots\bundle;
  */
 add_action('wp_enqueue_scripts', function () {
     bundle('app')->enqueue();
+    wp_enqueue_script('agoda/messaging-client', '/messaging-client/messaging-client-full.js', [], null, true);
+    wp_enqueue_script('agoda/messaging-client-worker', '/messaging-client/messaging-client-worker.js', [], null, true);
+    wp_enqueue_script('agoda/common-js', '/messaging-client/agoda-common-script.js', [], null, true);
+
+    $current_language = ICL_LANGUAGE_CODE;
+
+	if( $current_language === 'en' ) {
+		$current_language = 'en-us';
+    }
+
+    switch ( $_SERVER['SERVER_NAME'] ) {
+        case 'wpmomentsdev.wp.agoda.com':
+            $environment = 'development';
+        break;
+        case 'wpmomentsstg.wp.agoqa.com':
+            $environment = 'staging';
+        break;
+        case 'wpmomentsprd.wp.agoda.com':;
+            $environment = 'production-internal';
+        default:
+            $environment = 'production';
+            break;
+    }
+
+    $lang = 'en-us';
+
+    if ( ICL_LANGUAGE_CODE !== 'en' ) {
+        $lang = ICL_LANGUAGE_CODE;
+    }
+
+    $search_lang = [
+        'en-us' =>	'1',
+        'fr-fr' =>	'2',
+        'de-de' =>	'3',
+        'it-it' =>	'4',
+        'es-es' =>	'5',
+        'ja-jp' =>	'6',
+        'zh-hk' =>	'7',
+        'zh-cn' =>	'8',
+        'ko-kr' =>	'9',
+        'el-gr' =>	'10',
+        'ru-ru' =>	'11',
+        'pt-pt' =>	'12',
+        'nl-nl' =>	'13',
+        'en-ca' =>	'14',
+        'en-in' =>	'15',
+        'en-gb' =>	'16',
+        'en-za' =>	'17',
+        'en-au' =>	'18',
+        'en-sg' =>	'19',
+        'zh-tw' =>	'20',
+        'en-nz' =>	'21',
+        'th-th' =>	'22',
+        'ms-my' =>	'23',
+        'vi-vn' =>	'24',
+        'sv-se' =>	'25',
+        'id-id' =>	'26',
+        'pl-pl' =>	'27',
+        'nb-no' =>	'28',
+        'da-dk' =>	'29',
+        'fi-fi' =>	'30',
+        'cs-cz' =>	'31',
+        'tr-tr' =>	'32',
+        'ca-es' =>	'33',
+        'hu-hu' =>	'34',
+        'hi-in' =>	'35',
+        'bg-bg' =>	'36',
+        'ro-ro' =>	'37',
+        'sl-si' =>	'38',
+        'he-il' =>	'39',
+        'ar-ae' =>	'40',
+        'nl-be' =>	'41',
+        'en-ie' =>	'42',
+        'pt-br' =>	'43',
+        'es-ar' =>	'44',
+        'es-mx' =>	'45',
+        'lt-lt' =>	'46',
+        'lv-lv' =>	'47',
+        'hr-hr' =>	'48',
+        'et-ee' =>	'49',
+        'uk-ua' =>	'50',
+        'tl-ph' =>	'51',
+    ];
+    
+    
+
+    $jsvars = apply_filters('wp63_js_vars', [
+        'device_id' => wp_is_mobile() ? 4 : 1,
+        'page_type_id' => 6003, 
+        'server' => $_SERVER['SERVER_NAME'],
+        'http_method' => $_SERVER['REQUEST_METHOD'],
+        'http_referer' => @$_SERVER['HTTP_REFERER'],
+        'query_string' => $_SERVER['QUERY_STRING'],
+        'ajaxurl' => admin_url( 'admin-ajax.php' ),
+        'site_url' => site_url(),
+            'current_language' => $current_language,
+            'messaging_worker' => '/messaging-client/messaging-client-worker.js' ,
+            'messaging_polyfills' => '/messaging-client/messaging-client-polyfills.js' ,
+            'config' => [
+                'mode' => 'production',
+                'blogCidApi' => '/api/blog/findcid'
+        ],
+        'environment' => $environment,
+        'search_suggestion' => "/Search/Search/GetUnifiedSuggestResult/3/{$search_lang[$lang]}/1/0/{$lang}/",
+        'l10n' => [
+          'iso_date_format' => __('D MMM YYYY', 'agoda'),
+          'Please enter the name of a country, city, airport, neighborhood, landmark, or property to proceed.' => __( 'Please enter the name of a country, city, airport, neighborhood, landmark, or property to proceed.', 'agoda' ),
+          'Enter a destination or property' => __( 'Enter a destination or property', 'agoda' ),
+          '%1$d adults, %2$d children' => __( '%1$d adults, %2$d children', 'agoda' ),
+          '%d adults' => __( '%d adults', 'agoda' ),
+          '%d children' => __( '%d children', 'agoda' ),
+          '%d rooms' => __( '%d rooms', 'agoda' ),
+        ]
+    ]);
+    
+    wp_localize_script('app/1', 'wp63', $jsvars);
+    
 }, 100);
 
 /**
@@ -115,84 +232,25 @@ add_action('after_setup_theme', function () {
      */
     add_image_size('featured', 1990, 700, true);
 
+    add_image_size('card-thumbnails', 507, 338, true, ['center', 'center']);
+
+    add_image_size('mobile-card-thumbnails', 369, 238, true);
+
+    add_image_size('horizontal-card-thumbnails', 378, 262, true);
+
+    add_image_size('you-may-also-like', 252, 197, true);
+
+    add_image_size('you-may-also-like-cards', 369, 239, true);
+
+    add_image_size('influencer-avatar', 70, 70, true, ['center', 'center']);
+
+    add_image_size('popular-influencer-profile', 248.01, 248.01, true, ['center', 'center']);
+
     /**
      * Add management of taxonomy translations for editors.
      * */
     $role = get_role( 'editor' );
     $role->add_cap( 'wpml_manage_string_translation', true );
-
-    /**
-     * Search Function
-     */
-
-    function search()
-    {
-        $string = $_POST['search'];
-
-        $results = [
-            'posts' => [],
-            'influencers' => [],
-            'countries' => []
-        ];
-
-        $posts_query = new \WP_Query([
-            'post_type' => 'traveltips',
-            'posts_per_page' => 10,
-            's' => $string,
-        ]);
-
-        $posts = array_map( function ( $post ) {
-            return (object) [
-                'title' => $post->post_title,
-                'link' => get_permalink($post),
-                'excerpt' => $post->post_excerpt,
-                'thumbnail' => get_the_post_thumbnail_url($post, 'thumbnail'),
-            ];
-        }, $posts_query->posts);
-
-        $results['posts'] = $posts;
-
-        $influencers_query = new \WP_Term_Query([
-            'taxonomy' => 'influencer',
-            'name__like' => $string,
-        ]);
-
-        $influencers = array_map( function ( $influencer ) {
-            return (object) [
-                'name' => $influencer->name,
-                'link' => get_term_link($influencer),
-                'description' => $influencer->description,
-                'profile_picture' => get_field('profile_picture', $influencer),
-            ];
-        }, $influencers_query->terms);
-
-        $results['influencers'] = $influencers;
-
-        $countries_query = new \WP_Term_Query([
-            'taxonomy' => 'country',
-            'name__like' => $string,
-        ]);
-
-        $countries = array_map( function ( $country ) {
-            return (object) [
-                'name' => $country->name,
-                'link' => get_term_link($country),
-                'description' => $country->description,
-                'thumbnail' => get_field('country_image', $country)['sizes']['thumbnail'] ?? '',
-            ];
-        }, $countries_query->terms);
-
-        $results['countries'] = $countries;
-
-        wp_reset_postdata();
-
-        echo json_encode($results);
-
-        die();
-    }
-
-    add_action('wp_ajax_nopriv_search', 'search');
-    add_action('wp_ajax_search', 'search');
 }, 20);
 
 /**

@@ -16,6 +16,11 @@
 <script>
     var page = 1;
     const perPage = {{ $perPage }};
+
+    function incrementPage() {
+        page++;
+    }
+
     jQuery('#loadMoreInfluencers').click(function(){
       console.log('ajax call');
         jQuery.ajax({
@@ -26,7 +31,8 @@
                 page: page,
                 per_page: perPage
             },
-            success: function(response){
+            success: function(response) {
+                incrementPage();
                 jQuery('#influencers').append(response)
             }
         })

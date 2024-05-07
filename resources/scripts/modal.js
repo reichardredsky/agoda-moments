@@ -1,7 +1,7 @@
 // Create the modal element
 const modal = (classSelector) => {
     const content = document.querySelector('#modalContent');
-    const modalBtn = document.querySelector(classSelector);
+    const modalBtns = document.querySelectorAll(classSelector);
     const modalWrapper = document.createElement('div');
     modalWrapper.classList.add('modal-wrapper');
 
@@ -14,10 +14,12 @@ const modal = (classSelector) => {
     }
 
     // Event listener to trigger the modal
-    modalBtn.addEventListener('click', function(event) {
-        content.classList.remove('tw-hidden');
-        content.classList.add('tw-flex')
-        showModal();
+    modalBtns.forEach((modalBtn) => {
+        modalBtn.addEventListener('click', function(event) {
+            content.classList.remove('tw-hidden');
+            content.classList.add('tw-flex')
+            showModal();
+        });
     });
 
     // Function to close the modal

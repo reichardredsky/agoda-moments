@@ -38,7 +38,7 @@
           </p>
           <div class="tw-hidden lg:tw-flex tw-mt-[calc(32/var(--base-screen)*100vw)] lg:tw-mt-[calc(23/var(--base-screen)*100vw)] xl:tw-mt-[23px] lg:tw-gap-x-[calc(20/var(--base-screen)*100vw)] xl:tw-gap-x-[20px]">
             @foreach ( $socials as $social )
-              <a href="{{ $social['link'] }}" class="tw-bg-[#1C1C1C] tw-rounded-full tw-flex tw-justify-center tw-items-center">
+              <a href="{{ $social['link'] }}"  target="_blank" class="tw-bg-[#1C1C1C] tw-rounded-full tw-flex tw-justify-center tw-items-center">
                 <img class="hover:tw-opacity-90 tw-rounded-full tw-bg-white tw-object-cover tw-w-[calc(53.21/var(--base-screen)*100vw)] tw-h-[calc(53.21/var(--base-screen)*100vw)] xl:tw-w-[53.21px] xl:tw-h-[53.21px]" src="{{ asset('images/svg/'.$social['name'].'.svg') }}">
               </a>
             @endforeach
@@ -56,7 +56,7 @@
     <!-- Mobile socials -->
     <div class="tw-w-full tw-flex tw-justify-evenly lg:tw-hidden tw-mt-[calc(27/var(--base-screen)*100vw)] tw-gap-x-[calc(14.87/var(--base-screen)*100vw)] lg:tw-gap-x-[calc(20/var(--base-screen)*100vw)] xl:tw-gap-x-[20px]">
       @foreach ( $socials as $social )
-        <a href="{{ $social['link'] }}"><img class="tw-w-[calc(39.55/var(--base-screen)*100vw)] tw-rounded-full tw-bg-white tw-object-cover tw-h-[calc(39.55/var(--base-screen)*100vw)]" src="{{ asset('images/svg/'.$social['name'].'.svg') }}"></a>
+        <a href="{{ $social['link'] }}"  target="_blank"><img class="tw-w-[calc(39.55/var(--base-screen)*100vw)] tw-rounded-full tw-bg-white tw-object-cover tw-h-[calc(39.55/var(--base-screen)*100vw)]" src="{{ asset('images/svg/'.$social['name'].'.svg') }}"></a>
       @endforeach
       {{-- <a href="#"><img class="tw-w-[calc(39.55/var(--base-screen)*100vw)] tw-h-[calc(39.55/var(--base-screen)*100vw)]" src="@asset('images/svg/facebook.svg')"></a>
       <a href="#"><img class="tw-w-[calc(39.55/var(--base-screen)*100vw)] tw-h-[calc(39.55/var(--base-screen)*100vw)]" src="@asset('images/svg/messenger.svg')"></a>

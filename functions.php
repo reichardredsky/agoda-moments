@@ -122,6 +122,92 @@ add_action('wp_ajax_nopriv_load_more_influencers', 'load_more_influencers');
 add_action('wp_ajax_load_more_influencers', 'load_more_influencers');
 
 
+/**
+ * Search Function
+ */
+
+function search()
+{
+    $string = $_POST['search'];
+    $is_header_search = $_POST['isHeaderSearch'];
+
+    $results = [];
+
+    $posts_query = new \WP_Query([
+        'post_type' => 'traveltips',
+        'posts_per_page' => 10,
+        's' => $string,
+    ]);
+
+    $posts = array_map( function ( $post ) {
+        return (object) [
+            'title' => $post->post_title,
+            'link' => get_permalink($post),
+            'excerpt' => $post->post_excerpt,
+            'thumbnail' => get_the_post_thumbnail_url($post, 'thumbnail'),
+        ];
+    }, $posts_query->posts);
+
+    array_push($results, $posts);
+
+    $influencers_query = new \WP_Term_Query([
+        'taxonomy' => 'influencer',
+        'name__like' => $string,
+    ]);
+
+    $influencers = array_map( function ( $influencer ) {
+        return (object) [
+            'title' => $influencer->name,
+            'link' => get_term_link($influencer),
+            'excerpt' => $influencer->description,
+            'thumbnail' => get_field('profile_picture', $influencer),
+        ];
+    }, $influencers_query->terms);
+
+    array_push( $results, $influencers );
+
+    $countries_query = new \WP_Term_Query([
+        'taxonomy' => 'country',
+        'name__like' => $string,
+    ]);
+
+    $countries = array_map( function ( $country ) {
+        return (object) [
+            'title' => $country->name,
+            'link' => get_term_link($country),
+            'excerpt' => $country->description,
+            'thumbnail' => get_field('country_image', $country)['sizes']['thumbnail'] ?? '',
+        ];
+    }, $countries_query->terms);
+
+    array_push($results, $countries);
+
+    wp_reset_postdata();
+
+    if ( $is_header_search ) {
+        foreach ( $results as $result ) {
+            echo view('components.search-influencer-result', [
+                'title' => $result->title,
+                'link' => $result->link,
+            ]);
+        }
+    } else {
+        foreach ( $results as $result ) {
+            echo view('components.search-result', [
+                'title' => $result->title,
+                'link' => $result->link,
+                'excerpt' => $result->excerpt,
+                'thumbnail' => $result->thumbnail,
+            ]);
+        }
+    }
+
+    wp_die();
+}
+
+add_action('wp_ajax_nopriv_search', 'search');
+add_action('wp_ajax_search', 'search');
+
 // $strings = [
 //     'January',
 //     'February',

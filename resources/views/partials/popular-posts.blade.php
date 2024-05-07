@@ -1,6 +1,5 @@
 <!-- Popular posts Desktop -->
 <div class="max-screen tw-mx-auto lg:tw-mt-[calc(54/var(--base-screen)*100vw)] xl:tw-mt-[54px] tw-flex-col tw-hidden lg:tw-flex">
-  @if ( count($posts) > 0 )
   <div class="tw-relative tw-w-full">
     <div class="tw-flex tw-justify-between tw-items-start">
       <h2 class="tw-font-agoda-sans-stemless tw-my-[calc(30/var(--base-screen)*100vw)] lg:tw-my-0 tw-font-[400] tw-text-[calc((28/var(--base-screen))*100vw)] lg:tw-text-[calc((48/var(--base-screen))*100vw)] xl:tw-text-[48px] lg:tw-mb-[calc((54/var(--base-screen))*100vw)] xl:tw-mb-[38px] tw-text-[#2A2A2E]">
@@ -20,7 +19,7 @@
           <div class="dropdown-menu tw-hidden tw-relative">
               <ul class="tw-flex tw-flex-col tw-bg-white tw-w-full tw-absolute tw-z-40 tw-shadow-xl tw-mt-5 tw-rounded-xl">
                 <li class="hover:tw-bg-gray-50">
-                  <a href="#" class="tw-w-full tw-text-[#5392F9] tw-text-[calc(18/var(--base-screen)*100vw)] xl:tw-text-[28px] tw-font-medium tw-py-[calc(12/var(--base-screen)*100vw)] tw-px-[calc(27/var(--base-screen)*100vw)] tw-text-center tw-inline-flex tw-items-center">
+                  <a onclick="appendToUrl('/')" href="#" class="tw-w-full tw-text-[#5392F9] tw-text-[calc(18/var(--base-screen)*100vw)] xl:tw-text-[28px] tw-font-medium tw-py-[calc(12/var(--base-screen)*100vw)] tw-px-[calc(27/var(--base-screen)*100vw)] tw-text-center tw-inline-flex tw-items-center">
                     {!! __('All Countries', 'moments') !!}
                   </a>
                 </li>
@@ -37,16 +36,17 @@
       @endif
     </div>
     <div class="tw-flex tw-flex-col lg:tw-gap-y-[1.5vw] xl:tw-gap-y-[30px]">
-      @foreach ( $posts as $post )
-        @include('components.popular-post-card-desktop', ['post' => $post])
-      @endforeach
+      @if ( count($posts) > 0 )
+        @foreach ( $posts as $post )
+          @include('components.popular-post-card-desktop', ['post' => $post])
+        @endforeach
+      @else 
+        <p class="tw-text-[#2E2D2A] tw-font-[400] tw-text-[calc(21.85/var(--base-screen)*100vw)] xl:tw-text-[21.85px] tw-line-clamp-1">
+          {{ __('No travel tips found.', 'moments') }}
+        </p>
+      @endif
     </div>
   </div>
-  @else 
-    <p class="tw-text-[#2E2D2A] tw-font-[400] tw-text-[calc(21.85/var(--base-screen)*100vw)] xl:tw-text-[21.85px] tw-line-clamp-1">
-      {{ __('No travel tips found.', 'moments') }}
-    </p>
-  @endif
 </div>
 
 <!-- Popular posts Tab/Mobile -->
@@ -74,7 +74,7 @@
             <div class="dropdown-menu tw-hidden tw-relative">
               <ul class="tw-flex tw-flex-col tw-bg-white tw-w-full tw-absolute tw-z-40 tw-shadow-xl tw-mt-5 tw-rounded-xl">
                 <li class="hover:tw-bg-gray-50">
-                  <a href="#" class="tw-w-full tw-text-[#5392F9] tw-text-[calc(18/var(--base-screen)*100vw)] xl:tw-text-[28px] tw-font-medium tw-py-[calc(12/var(--base-screen)*100vw)] tw-px-[calc(27/var(--base-screen)*100vw)] tw-text-center tw-inline-flex tw-items-center">
+                  <a onclick="appendToUrl('/')" href="#" class="tw-w-full tw-text-[#5392F9] tw-text-[calc(18/var(--base-screen)*100vw)] xl:tw-text-[28px] tw-font-medium tw-py-[calc(12/var(--base-screen)*100vw)] tw-px-[calc(27/var(--base-screen)*100vw)] tw-text-center tw-inline-flex tw-items-center">
                     {!! __('All Countries', 'moments') !!}
                   </a>
                 </li>
@@ -112,9 +112,14 @@
   function appendToUrl( url )
   {
     const parser = new URL(window.location);
-    parser.searchParams.set('country', url);
+    if ( url == '/') {
+      parser.searchParams.delete('country');
+      window.location = parser.href;
+    } else {
+      parser.searchParams.set('country', url);
     
-    window.location = parser.href;
+      window.location = parser.href;
+    }
   }
 
 </script>

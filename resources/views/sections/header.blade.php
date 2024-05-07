@@ -12,8 +12,8 @@
           <img src="https://www.agoda.com/wp-content/themes/agoda-travel-guides/dist/images/agoda-logo_688a8f9e.svg" alt="Agoda Moments" class="tw-w-auto tw-h-[calc((32/var(--base-screen))*100vw)] md:tw-h-[calc((32/1023)*100vw)] lg:tw-h-[calc(32/var(--base-screen)*100vw)] xl:tw-h-[32px]" />
         </a>
       </li>
-      <li class="tw-hidden lg:tw-block">
-        <ul class="tw-flex tw-items-center tw-gap-x-[calc(36/var(--base-screen)*100vw)] xl:tw-gap-x-[36px]">
+      <li class="tw-hidden lg:tw-block tw-mr-auto">
+        <ul class="toggle-serarch-hide tw-flex tw-items-center tw-gap-x-[calc(36/var(--base-screen)*100vw)] xl:tw-gap-x-[36px]">
           @if(count($menu_items))
             @foreach($menu_items as $item)
             <li>
@@ -35,16 +35,24 @@
         </ul>
       </li>
       @if(is_tax('influencer'))
-      {{--
-        <li class="tw-ml-auto tw-hidden lg:tw-block">
-        <div class="tw-flex tw-items-center tw-gap-x-[calc(23/var(--base-screen)*100vw)] xl:tw-gap-x-[23px]">
-          <img draggable="false" class="lg:tw-w-[calc(32.1/var(--base-screen)*100vw)] lg:tw-h-[calc(32.1/var(--base-screen)*100vw)] xl:tw-w-[32.1px] xl:tw-h-[32.1px]" src="@asset('images/svg/search_outline.svg')" />
-          <input id="headerSearch" class="tw-w-[calc(266/var(--base-screen)*100vw)] xl:tw-w-[266px] tw-font-[400] tw-border-0 lg:tw-text-[calc(16/var(--base-screen)*100vw)] xl:tw-text-[16px] placeholder:tw-text-[#2A2A2E] tw-text-[#2A2A2E] placeholder:tw-font-agoda-sans-text placeholder:tw-font-[400] placeholder:tw-text-[calc(16/var(--base-screen)*100vw)] xl:placeholder:tw-text-[16px] tw-outline-none tw-text-start focus:tw-ring-0" placeholder="Explore Country, City guides" />
-        </div>
-      </li>
-        --}}
+        <li class="tw-hidden lg:tw-block">
+          <div class="tw-flex tw-relative tw-items-center tw-gap-x-[calc(23/var(--base-screen)*100vw)] xl:tw-gap-x-[23px]">
+            <img draggable="false" class="lg:tw-w-[calc(32.1/var(--base-screen)*100vw)] lg:tw-h-[calc(32.1/var(--base-screen)*100vw)] xl:tw-w-[32.1px] xl:tw-h-[32.1px]" src="@asset('images/svg/search_outline.svg')" />
+            <div class="tw-flex tw-flex-col tw-w-full tw-relative">
+              <input id="headerSearch" class="toggle-search tw-w-[calc(266/var(--base-screen)*100vw)] xl:tw-w-[266px] tw-font-[400] tw-border-0 lg:tw-text-[calc(16/var(--base-screen)*100vw)] xl:tw-text-[16px] placeholder:tw-text-[#2A2A2E] tw-text-[#2A2A2E] placeholder:tw-font-agoda-sans-text placeholder:tw-font-[400] placeholder:tw-text-[calc(16/var(--base-screen)*100vw)] xl:placeholder:tw-text-[16px] tw-outline-none tw-text-start focus:tw-ring-0" placeholder="Explore Country, City guides" />
+              <div class="toggle-search-result tw-hidden tw-w-full tw-absolute tw-bg-white tw-z-[999] tw-mt-[calc(57/var(--base-screen)*100vw)] xl:tw-mt-[57px]">
+                <ul id="searchInfluencerResultContainer">
+                  
+                </ul>
+              </div>
+            </div>
+            <button class="toggle-close-btn tw-hidden tw-absolute tw-right-0 tw-w-[20px] tw-h-[20px]">
+              <i class="fa-regular fa-circle-xmark"></i>
+            </button>
+          </div>
+        </li>
       @endif
-      <li class="tw-ml-auto tw-cursor-pointer open-modal-btn tw-hidden lg:tw-block {{ is_tax('influencer') ? '' : 'tw-ml-auto' }}">
+      <li class="tw-cursor-pointer open-modal-btn tw-hidden lg:tw-block {{ is_tax('influencer') ? '' : 'tw-ml-auto' }}">
         <img draggable="false" class="tw-w-auto lg:tw-h-[calc(20.1/var(--base-screen)*100vw)] xl:tw-h-[20.1px]" src="{{ $current_language['country_flag_url'] }}" />
       </li>
     </ul>
@@ -87,17 +95,13 @@
         </ul>
       </div>
       
-      {{--
-        <div class="tw-flex tw-flex-col tw-w-full pl-5 mt-3 tw-border-b-2">
-          <h4 class="mobile-menu__section-title">Settings</h4>
-          <div>
-            <button class="btn btn-link header__language-switcher-button" data-toggle="modal" data-target="#language-switcher">
-              <span>Language</span>
-              <img src="{{ $current_language['flag'] }}" alt="{{ $current_language['name'] }}" class="header__language-flag">
-            </button>
-          </div>
-        </div>
-      --}}
+      <div class="tw-flex tw-flex-col tw-w-full tw-p-5 tw-mt-3 tw-border-b-2">
+        <h4 class="tw-text-[#999999] tw-font-thin tw-text-[12px]">Settings</h4>
+        <button class="open-modal-btn tw-flex tw-gap-x-5 tw-items-center">
+          <span class="">Language</span>
+          <img src="{{ $current_language['country_flag_url'] }}" class="header__language-flag">
+        </button>
+      </div>
   </div>
 </aside>
 
