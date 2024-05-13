@@ -7,7 +7,7 @@
 
 
 
-  <div class="agoda-swiper tw-flex tw-w-full tw-relative tw-pb-5 tw-max-w-[calc(100vw-(45/var(--base-screen)*100vw))] tw-mx-auto lg:tw-px-[calc(20/var(--base-screen)*100vw)] xl:tw-px-[20px] lg:tw-max-w-[calc(((1631.17+20)/var(--base-screen))*100vw)] xl:tw-max-w-[calc(1631.17px+20px)]">
+  <div class="agoda-swiper-influencer tw-flex tw-w-full tw-relative tw-pb-5 tw-max-w-[calc(100vw-(45/var(--base-screen)*100vw))] tw-mx-auto lg:tw-px-[calc(20/var(--base-screen)*100vw)] xl:tw-px-[20px] lg:tw-max-w-[calc(((1631.17+20)/var(--base-screen))*100vw)] xl:tw-max-w-[calc(1631.17px+20px)]">
     <!-- Right Arrow -->
     <div class="agoda-swiper-next tw-cursor-pointer hover:tw-opacity-100 tw-delay-100 tw-transition-opacity tw-absolute tw-rounded-full tw-right-[calc(18/var(--base-screen)*100vw)] lg:tw-right-[calc(47/var(--base-screen)*100vw)] tw-top-[calc(97/var(--base-screen)*100vw)] lg:tw-top-[calc(192/var(--base-screen)*100vw)] xl:tw-top-[192px] xl:tw-right-[47px] tw-flex tw-items-center tw-justify-center tw-bg-[#1C1C1C] tw-opacity-[60%] tw-w-[calc(54/var(--base-screen)*100vw)] tw-h-[calc(54/var(--base-screen)*100vw)] lg:tw-w-[calc(73/var(--base-screen)*100vw)] lg:tw-h-[calc(73/var(--base-screen)*100vw)] xl:tw-w-[73px] xl:tw-h-[73px] tw-z-10 tw-text-white">
       <img src="@asset('images/svg/chevron_next.svg')" class="tw-w-[calc(12.38/var(--base-screen)*100vw)] lg:tw-w-[calc(16.73/var(--base-screen)*100vw)] xl:tw-w-[16.73px] tw-h-auto " />
@@ -18,7 +18,7 @@
     </div>
 
     <!-- Items -->
-    <div class="agoda-swiper-wrapper tw-w-full tw-grid tw-grid-cols-1 md:tw-grid-cols-3 tw-flex-nowrap tw-gap-x-[calc(10/var(--base-screen)*100vw)] md:tw-gap-x-[calc(10/var(--base-screen)*100vw)] lg:tw-gap-x-[calc(40.35/var(--base-screen)*100vw)] xl:tw-gap-x-[40.35px]">
+    <div class="agoda-swiper-wrapper-influencer tw-w-full tw-grid tw-grid-cols-1 md:tw-grid-cols-3 tw-flex-nowrap tw-gap-x-[calc(10/var(--base-screen)*100vw)] md:tw-gap-x-[calc(10/var(--base-screen)*100vw)] lg:tw-gap-x-[calc(40.35/var(--base-screen)*100vw)] xl:tw-gap-x-[40.35px]">
       {{--
         @foreach($top_10_travel_tips as $travelTip)
         @include('components.featured-card', [

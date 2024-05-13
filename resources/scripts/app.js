@@ -29,7 +29,22 @@ domReady(async () => {
             slidesPerView: 1,
         }
     }
-  });
+  }).loadItems();
+
+  AgodaSwiper('.agoda-swiper-influencer', {
+    id: '',
+    direction: 'horizontal',
+    slidesPerView: 3,
+    wrapperClass: '.agoda-swiper-wrapper-influencer',
+    breakpoints: {
+        1024: {
+            slidesPerView: 2,
+        },
+        640: {
+            slidesPerView: 1,
+        }
+    }
+  }).loadItems('influencer_top_ten_travel_tips');
 
   AgodaSwiper('.banner-swiper', {
     id: '',
@@ -44,7 +59,7 @@ domReady(async () => {
             slidesPerView: 1,
         }
     }
-  });
+  }).init();
 
   AgodaSwiper('.may-also-like', {
     id: '',
@@ -62,7 +77,7 @@ domReady(async () => {
             slidesPerView: 1,
         }
     }
-  });
+  }).init();
 
   Search();
   ToggleSearch('.toggle-search');
