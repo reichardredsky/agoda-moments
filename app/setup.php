@@ -14,7 +14,7 @@ use function Roots\bundle;
  * @return void
  */
 add_action('wp_enqueue_scripts', function () {
-    bundle('app')->enqueue();
+    bundle('app')->enqueueJs(true, ['jquery'])->enqueue();
     wp_enqueue_script('agoda/messaging-client', '/messaging-client/messaging-client-full.js', [], null, true);
     wp_enqueue_script('agoda/messaging-client-worker', '/messaging-client/messaging-client-worker.js', [], null, true);
     wp_enqueue_script('agoda/common-js', '/messaging-client/agoda-common-script.js', [], null, true);
