@@ -44,7 +44,8 @@ class Single extends Composer
     {
         $post = get_queried_object();
         $influencer = wp_get_post_terms($post->ID, 'influencer')[0];
-        $influencer->avatar = get_field('profile_picture', $influencer);
+        $avatar = get_field('profile_picture', $influencer);
+        $influencer->avatar = $avatar['sizes']['influencer-avatar'];
         $influencer->link = get_term_link($influencer);
         $current_language = apply_filters('wpml_current_language', null);
         $date = $current_language === 'th' ? $this->getBuddhistDate( date_create($post->post_date) ) : get_the_date('F j, Y', $post->ID);
@@ -70,7 +71,8 @@ class Single extends Composer
             return (object) [
                 'title' => $post->post_title,
                 'link' => get_permalink($post),
-                'image' => get_the_post_thumbnail_url($post, 'full'),
+                'image' => get_the_post_thumbnail_url($post, 'you-may-also-like'),
+                'mobile_image' => get_the_post_thumbnail_url($post, 'you-may-also-like-cards'),
                 'excerpt' => get_the_excerpt($post),
             ];
 

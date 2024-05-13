@@ -4,6 +4,7 @@ namespace App\View\Composers;
 
 use Roots\Acorn\View\Composer;
 use WP_Query;
+
 class TopTravelTips extends Composer
 {
     /**
@@ -41,16 +42,17 @@ class TopTravelTips extends Composer
         $_topTravelTips = collect($topTravelTips)
             ->map(function($items) {
                 $influencer = wp_get_post_terms($items->ID, 'influencer')[0];
-                $influencer->avatar = get_field('profile_picture', $influencer);
+                $avatar = get_field('profile_picture', $influencer);
+                $influencer->avatar = $avatar['sizes']['influencer-avatar'];
                 $influencer->link = get_term_link($influencer);
 
                 $current_language = apply_filters('wpml_current_language', null);
                 $date = $current_language === 'th' ? $this->getBuddhistDate( date_create($items->post_date) ) : get_the_date('F j, Y', $items->ID);
-                
+
                 return [
                     'title' => $items->post_title,
                     'content' => $items->post_content,
-                    'image' => get_the_post_thumbnail_url($items->ID, 'full'),
+                    'image' => get_the_post_thumbnail_url($items->ID, 'card-thumbnails'),
                     'link' => get_permalink($items->ID),
                     'excerpt' => $items->post_excerpt,
                     'influencer' => $influencer,

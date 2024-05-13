@@ -9,7 +9,8 @@
     ])
   @include('partials.popular-influencers')
   @include('partials.popular-posts', [
-    'title' => __('Recently Updated Travel Tips', 'moments')
+    'title' => __('Recently Updated Travel Tips', 'moments'),
+    'filter_label' => 'All Country'
     ])
 @endsection
 

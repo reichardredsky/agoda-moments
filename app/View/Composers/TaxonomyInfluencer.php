@@ -41,7 +41,9 @@ class TaxonomyInfluencer extends Composer
 
     public function influencerProfile () {
         $influencer = get_queried_object();
-        $influencer->avatar = get_field('profile_picture', $influencer);
+        $avatar = get_field('profile_picture', $influencer);
+        $influencer->avatar = $avatar['sizes']['influencer-avatar'];
+        $influencer->profile = $avatar['sizes']['popular-influencer-profile'];
         $influencer->cover_photo = get_field('profile_background_image', $influencer)['url'] ?? '';
         $influencer->link = get_term_link($influencer);
         $influencer->influencer_title = get_field('influencer_title', $influencer);
@@ -75,7 +77,7 @@ class TaxonomyInfluencer extends Composer
     {
         $influencer = get_queried_object();
 
-        if ( !isset($_GET['country']) ) {
+        if ( !isset($_GET['filter']) ) {
 
             $args = [
                 'post_type' => 'travel-tips',
@@ -102,7 +104,7 @@ class TaxonomyInfluencer extends Composer
                     [
                         'taxonomy' => 'country',
                         'field' => 'slug',
-                        'terms' => $_GET['country']
+                        'terms' => $_GET['filter']
                     ]
                 ],
             ];
@@ -112,7 +114,8 @@ class TaxonomyInfluencer extends Composer
 
         $posts = array_map( function ($post) {
             $influencer = get_queried_object();
-            $influencer_avatar = get_field('profile_picture', $influencer);
+            $avatar = get_field('profile_picture', $influencer);
+            $influencer_avatar = $avatar['sizes']['influencer-avatar'];
             $influencer_link = get_term_link($influencer);
 
             $current_language = apply_filters('wpml_current_language', null);
@@ -126,7 +129,7 @@ class TaxonomyInfluencer extends Composer
                 'influencer_avatar' => $influencer_avatar,
                 'influencer_link' => $influencer_link,
                 'influencer_name' => $influencer->name,
-                'image' => get_the_post_thumbnail_url($post, 'full'),
+                'image' => get_the_post_thumbnail_url($post, 'horizontal-card-thumbnails'),
             ];
         }, $query->posts);
 
@@ -154,7 +157,8 @@ class TaxonomyInfluencer extends Composer
 
         $posts = collect($query->posts)->map(function( $post ) {
             $influencer = wp_get_post_terms($post->ID, 'influencer')[0];
-            $influencer->avatar = get_field('profile_picture', $influencer);
+            $avatar = get_field('profile_picture', $influencer);
+            $influencer->avatar = $avatar['sizes']['influencer-avatar'];
             $influencer->link = get_term_link($influencer);
 
             $current_language = apply_filters('wpml_current_language', null);
@@ -164,7 +168,8 @@ class TaxonomyInfluencer extends Composer
             return [
                 'title' => $post->post_title,
                 'content' => $post->post_content,
-                'image' => get_the_post_thumbnail_url($post->ID, 'full'),
+                'image' => get_the_post_thumbnail_url($post->ID, 'card-thumbnails'),
+                'image_mobile' => get_the_post_thumbnail_url($post, 'mobile-card-thumbnails'),
                 'link' => get_permalink($post->ID),
                 'excerpt' => $post->post_excerpt,
                 'influencer' => $influencer,
@@ -188,19 +193,11 @@ class TaxonomyInfluencer extends Composer
     public function categories()
     {
 
-        $terms = get_terms([
-            'taxonomy' => 'country',
-            'hide_empty' => false,
-        ]);
+        $influencer = get_queried_object();
 
-        $terms = array_map(function ($term) {
-            return (object) [
-                'name' => $term->name,
-                'slug' => $term->slug,
-            ];
-        }, $terms);
+        $cities = apply_filters('get_user_cities', $influencer);
 
-        return $terms;
+        return $cities;
     }
 
     private function getBuddhistDate( \DateTime $date)

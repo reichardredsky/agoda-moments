@@ -96,7 +96,7 @@ function load_more_influencers() {
     $influencers = get_terms($tax_args);
 
     $influencers = array_map( function ( $influencer ) {
-        $influencer->profile_picture = get_field('profile_picture', $influencer);
+        $influencer->profile_picture = get_field('profile_picture', $influencer)['sizes']['card-thumbnails'];
         $influencer->link = get_term_link($influencer);
         $influencer->name = $influencer->name;
         $influencer->description = $influencer->description;
@@ -134,7 +134,7 @@ function search()
     $results = [];
 
     $posts_query = new \WP_Query([
-        'post_type' => 'traveltips',
+        'post_type' => 'travel-tips',
         'posts_per_page' => 10,
         's' => $string,
     ]);
@@ -150,9 +150,9 @@ function search()
 
     array_push($results, $posts);
 
-    $influencers_query = new \WP_Term_Query([
+    $influencers_query = get_terms([
         'taxonomy' => 'influencer',
-        'name__like' => $string,
+        'name__like' => $string
     ]);
 
     $influencers = array_map( function ( $influencer ) {
@@ -162,13 +162,13 @@ function search()
             'excerpt' => $influencer->description,
             'thumbnail' => get_field('profile_picture', $influencer),
         ];
-    }, $influencers_query->terms);
+    }, $influencers_query);
 
     array_push( $results, $influencers );
 
-    $countries_query = new \WP_Term_Query([
+    $countries_query = get_terms([
         'taxonomy' => 'country',
-        'name__like' => $string,
+        'name__like' => $string
     ]);
 
     $countries = array_map( function ( $country ) {
@@ -178,27 +178,36 @@ function search()
             'excerpt' => $country->description,
             'thumbnail' => get_field('country_image', $country)['sizes']['thumbnail'] ?? '',
         ];
-    }, $countries_query->terms);
+    }, $countries_query);
 
     array_push($results, $countries);
 
     wp_reset_postdata();
 
     if ( $is_header_search ) {
-        foreach ( $results as $result ) {
-            echo view('components.search-influencer-result', [
-                'title' => $result->title,
-                'link' => $result->link,
-            ]);
+        foreach( $results as $key => $resObject ) {
+            if ( !empty($resObject) ) {
+                foreach ( $resObject as $result ) {
+                    echo view('components.search-result', [
+                        'title' => $result->title,
+                        'excerpt' => $result->excerpt,
+                        'link' => $result->link,
+                    ]);
+                }
+            }
         }
     } else {
-        foreach ( $results as $result ) {
-            echo view('components.search-result', [
-                'title' => $result->title,
-                'link' => $result->link,
-                'excerpt' => $result->excerpt,
-                'thumbnail' => $result->thumbnail,
-            ]);
+        foreach ( $results as $key => $resObject ) {
+            if ( !empty($resObject) ) {
+                foreach ( $resObject as $result ) {
+                    echo view('components.search-result', [
+                        'title' => $result->title,
+                        'link' => $result->link,
+                        'excerpt' => $result->excerpt,
+                        'thumbnail' => $result->thumbnail,
+                    ]);
+                }
+            }
         }
     }
 

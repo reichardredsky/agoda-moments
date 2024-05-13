@@ -64,8 +64,7 @@ domReady(async () => {
     }
   });
 
-  Search('.search-input');
-  Search('.mobile-search-input');
+  Search();
   ToggleSearch('.toggle-search');
 });
 

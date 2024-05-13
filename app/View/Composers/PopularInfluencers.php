@@ -50,7 +50,8 @@ class PopularInfluencers extends Composer
         $influencers = get_terms($tax_args);
 
         $influencers = array_map( function ( $influencer ) use ( $social_links ) {
-            $influencer->profile_picture = get_field('profile_picture', $influencer);
+            $avatar = get_field('profile_picture', $influencer);
+            $influencer->profile_picture = $avatar['sizes']['popular-influencer-profile'];
             $influencer->link = get_term_link($influencer);
             $influencer->name = $influencer->name;
             $influencer->description = $influencer->description;

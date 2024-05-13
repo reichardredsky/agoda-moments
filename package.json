@@ -24,6 +24,7 @@
     "@roots/sage": "6.7.3"
   },
   "dependencies": {
-    "@tailwindcss/line-clamp": "^0.4.4"
+    "@tailwindcss/line-clamp": "^0.4.4",
+    "caniuse-lite": "^1.0.30001616"
   }
 }

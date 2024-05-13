@@ -9,24 +9,45 @@ const toggleSearch = (toggleSelector) => {
         toggleMenu.parentElement.nextElementSibling.classList.remove('tw-w-[80%]');
         closeBtn.classList.add('tw-hidden');
         searchResult.classList.add('tw-hidden');
+        toggle.style.width = '';
+    };
+    let timeout = null;
+
+    const debounce = (func, delay) => {
+        let timeout;
+        return function() {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => {
+                func.apply(this, arguments);
+            }, delay);
+        };
     };
 
-    console.log(toggle);
+
 
     if (toggle) {
         toggle.addEventListener('focus', () => {
-            console.log(toggleMenu);
+            toggle.style.width = '100%';
             toggleMenu.parentElement.classList.remove('lg:tw-block');
             toggleMenu.parentElement.nextElementSibling.classList.add('tw-w-[80%]');
             toggleMenu.parentElement.nextElementSibling.classList.add('tw-mr-auto');
-            // toggle.parentElement.nextElementSibling.classList.remove('tw-ml-auto');
-            searchResult.classList.remove('tw-hidden');
+            if (toggle.value) {
+                searchResult.classList.remove('tw-hidden');
+            }
             
             closeBtn.classList.remove('tw-hidden');
             closeBtn.addEventListener('click', closeSearch);
         });
 
-        toggle.addEventListener('blur', closeSearch);
+        toggle.addEventListener('input', debounce(() => {
+            if (toggle.value) {
+                searchResult.classList.remove('tw-hidden');
+            } else {
+                searchResult.classList.add('tw-hidden');
+            }
+        }, 500));
+
+        // toggle.addEventListener('blur', closeSearch);
     }
 
 }

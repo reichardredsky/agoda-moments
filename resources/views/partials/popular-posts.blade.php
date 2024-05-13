@@ -9,7 +9,11 @@
         <div id="dropdown-collapse" class="tw-relative tw-flex tw-flex-col tw-w-full lg:tw-max-w-[calc((438/var(--base-screen))*100vw)] xl:tw-max-w-[438px]">
           <button class="dropdown-trigger tw-flex tw-justify-between lg:tw-px-[calc(33/var(--base-screen)*100vw)] lg:tw-py-[calc(16/var(--base-screen)*100vw)] xl:tw-py-[19px] xl:tw-px-[33px] tw-shadow-[0px_0px_4px_0px_#0000001F] tw-text-[#5392F9] tw-bg-white-700 hover:tw-bg-white-800 focus:tw-ring-4 focus:tw-outline-none focus:tw-ring-blue-300 tw-font-medium tw-rounded-[999px] tw-text-[calc(28/var(--base-screen)*100vw)] xl:tw-text-[28px]
             tw-text-center tw-inline-flex tw-items-center" type="button">
-              <value>{!! __('All Countries', 'moments') !!}</value>
+              @if ( isset($_GET['filter']))
+                <value>{{{ ucfirst($_GET['filter']) }}}</value>
+              @else 
+                <value>{!! __($filter_label, 'moments') !!}</value>
+              @endif
               <span class="tw-ml-2 tw-text-[#666666]">
                 <svg class="tw-w-[18px] tw-h-[18px] tw-ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
@@ -20,7 +24,7 @@
               <ul class="tw-flex tw-flex-col tw-bg-white tw-w-full tw-absolute tw-z-40 tw-shadow-xl tw-mt-5 tw-rounded-xl">
                 <li class="hover:tw-bg-gray-50">
                   <a onclick="appendToUrl('/')" href="#" class="tw-w-full tw-text-[#5392F9] tw-text-[calc(18/var(--base-screen)*100vw)] xl:tw-text-[28px] tw-font-medium tw-py-[calc(12/var(--base-screen)*100vw)] tw-px-[calc(27/var(--base-screen)*100vw)] tw-text-center tw-inline-flex tw-items-center">
-                    {!! __('All Countries', 'moments') !!}
+                    {!! __($filter_label, 'moments') !!}
                   </a>
                 </li>
                 @foreach ( $categories as $category )
@@ -64,7 +68,11 @@
           <div id="dropdown-collapse-mobile" class="tw-relative tw-flex tw-flex-col tw-w-full lg:tw-max-w-[calc((438/var(--base-screen))*100vw)] xl:tw-max-w-[438px]">
             <button  class="dropdown-trigger tw-flex tw-justify-between tw-px-[calc(27/var(--base-screen)*100vw)] tw-py-[calc(12/var(--base-screen)*100vw)] tw-shadow-[0px_0px_4px_0px_#0000001F] tw-text-[#5392F9] tw-bg-white-700 hover:tw-bg-white-800 focus:tw-ring-4 focus:tw-outline-none focus:tw-ring-blue-300 tw-font-medium tw-rounded-[999px] tw-text-[calc(18/var(--base-screen)*100vw)] xl:tw-text-[28px]
               tw-text-center tw-inline-flex tw-items-center" type="button">
-                <value>{!! __('All Countries', 'moments') !!}</value>
+                @if ( isset($_GET['filter']))
+                  <value>{{{ ucfirst($_GET['filter'])  }}}</value>
+                @else 
+                  <value>{!! __($filter_label, 'moments') !!}</value>
+                @endif
                 <span class="tw-ml-2 tw-text-[#666666]">
                   <svg class="tw-w-[18px] tw-h-[18px] tw-ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
@@ -75,7 +83,7 @@
               <ul class="tw-flex tw-flex-col tw-bg-white tw-w-full tw-absolute tw-z-40 tw-shadow-xl tw-mt-5 tw-rounded-xl">
                 <li class="hover:tw-bg-gray-50">
                   <a onclick="appendToUrl('/')" href="#" class="tw-w-full tw-text-[#5392F9] tw-text-[calc(18/var(--base-screen)*100vw)] xl:tw-text-[28px] tw-font-medium tw-py-[calc(12/var(--base-screen)*100vw)] tw-px-[calc(27/var(--base-screen)*100vw)] tw-text-center tw-inline-flex tw-items-center">
-                    {!! __('All Countries', 'moments') !!}
+                    {!! __($filter_label, 'moments') !!}
                   </a>
                 </li>
                 @foreach ( $categories as $category )
@@ -113,10 +121,10 @@
   {
     const parser = new URL(window.location);
     if ( url == '/') {
-      parser.searchParams.delete('country');
+      parser.searchParams.delete('filter');
       window.location = parser.href;
     } else {
-      parser.searchParams.set('country', url);
+      parser.searchParams.set('filter', url);
     
       window.location = parser.href;
     }
