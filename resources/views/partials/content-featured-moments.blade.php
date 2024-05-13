@@ -18,9 +18,8 @@
     </div>
 
     <!-- Items -->
-    <div class="agoda-swiper-wrapper tw-w-full tw-grid tw-grid-cols-1 md:tw-grid-cols-3 tw-flex-nowrap tw-gap-x-[calc(10/var(--base-screen)*100vw)] md:tw-gap-x-[calc(10/var(--base-screen)*100vw)] lg:tw-gap-x-[calc(40.35/var(--base-screen)*100vw)] xl:tw-gap-x-[40.35px]">
-      {{--
-        @foreach($top_10_travel_tips as $travelTip)
+    <div class="agoda-swiper-wrapper tw-w-full tw-flex tw-flex-nowrap tw-gap-x-[calc(10/var(--base-screen)*100vw)] md:tw-gap-x-[calc(10/var(--base-screen)*100vw)] lg:tw-gap-x-[calc(40.35/var(--base-screen)*100vw)] xl:tw-gap-x-[40.35px]">
+      @foreach($top_10_travel_tips as $travelTip)
         @include('components.featured-card', [
           'title' => $travelTip['title'],
           'image' => $travelTip['image'],
@@ -29,11 +28,7 @@
           'date' => $travelTip['post_date'],
           'influencer' => $travelTip['influencer'],
         ])
-      @endforeach 
-      --}}
-      <div class="tw-w-full">@include('components.featured-card-skeleton')</div>
-      <div class="tw-hidden md:tw-block tw-w-full">@include('components.featured-card-skeleton')</div>
-      <div class="tw-hidden md:tw-block tw-w-full">@include('components.featured-card-skeleton')</div>
+      @endforeach
     </div>
   </div>
   @else 

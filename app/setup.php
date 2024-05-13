@@ -102,7 +102,6 @@ add_action('wp_enqueue_scripts', function () {
     
 
     $jsvars = apply_filters('wp63_js_vars', [
-        'get_queried_object' => get_queried_object(),
         'device_id' => wp_is_mobile() ? 4 : 1,
         'page_type_id' => 6003, 
         'server' => $_SERVER['SERVER_NAME'],
